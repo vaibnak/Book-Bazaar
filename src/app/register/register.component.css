@@ -14,13 +14,15 @@
 	margin:0;
 	height: 100%;
 	background-image: url("../../assets/bookbg.jpg");
+	background-position: center;
+
 }
 
 .box{
 
 	font-family: 'Fira Sans', sans-serif;
 	padding: 20px;
-	margin-top: 150px;
+	margin-top: 100px;
 	background-color: #001f45;
 }
 
