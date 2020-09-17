@@ -1,0 +1,29 @@
+.hd{
+	background-color: #3b3b3b;
+}
+
+.txt{
+	font-size: 50px;
+	margin: auto;
+	margin-top: 10px;
+	letter-spacing: 15px;
+	font-family: 'Russo One', sans-serif;
+}
+
+.bd{
+	margin:0;
+	height: 100%;
+	background-image: url("../../assets/bookbg.jpg");
+}
+
+.box{
+
+	font-family: 'Fira Sans', sans-serif;
+	padding: 20px;
+	margin-top: 150px;
+	background-color: #001f45;
+}
+
+.nv_bar{
+	width: 100%;
+}
