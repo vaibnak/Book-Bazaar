@@ -12,7 +12,7 @@
 
 .bd{
 	margin:0;
-	height: 100%;
+	min-height: 100%;
 	background-image: url("../../assets/bookbg.jpg");
 	background-position: center;
 

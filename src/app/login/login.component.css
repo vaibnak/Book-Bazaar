@@ -12,7 +12,7 @@
 
 .bd{
 	margin:0;
-	height: 100%;
+	min-height: 100%;
 	background-image: url("../../assets/bookbg.jpg");
 }
 
@@ -20,7 +20,7 @@
 
 	font-family: 'Fira Sans', sans-serif;
 	padding: 20px;
-	margin-top: 150px;
+	margin-top: 50px;
 	background-color: #001f45;
 }
 
