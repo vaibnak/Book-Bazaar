@@ -9,6 +9,7 @@ const PORT = 3000;
 
 var registerUserRoute = require('./routes/registerUserRoute');
 var loginUserRoute = require('./routes/loginUserRoute');
+var uploadBookRoute = require('./routes/uploadBookRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -20,6 +21,9 @@ app.use('/api/register',registerUserRoute);
 
 // endpoint to login the user
 app.use('/api/login',loginUserRoute);
+
+// endpoint to upload a book
+app.use('/api/upload',uploadBookRoute)
 
 
 
