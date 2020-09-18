@@ -10,6 +10,7 @@ const PORT = 3000;
 var registerUserRoute = require('./routes/registerUserRoute');
 var loginUserRoute = require('./routes/loginUserRoute');
 var uploadBookRoute = require('./routes/uploadBookRoute');
+var getBookRoute = require('./routes/getBookRoute');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -24,8 +25,10 @@ app.use('/api/register',registerUserRoute);
 app.use('/api/login',loginUserRoute);
 
 // endpoint to upload a book
-app.use('/api/upload',uploadBookRoute)
+app.use('/api/upload',uploadBookRoute);
 
+// endpoint to get the books
+app.use('/api/getBook',getBookRoute);
 
 
 
