@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {User} from '../user';
+import {ManageUsersService} from '../manage-users.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor() { 
+  constructor(private manageUsersService:ManageUsersService) { 
   	
   }
 
@@ -37,7 +38,12 @@ export class RegisterComponent implements OnInit {
   		this.registerForm.get('phoneNo').value,this.registerForm.get('password').value,this.registerForm.get('address').value);
  
  	console.log(this.user);
-
+ 	this.manageUsersService.registerUser(this.user)
+ 	.subscribe((data)=>{
+ 		console.log(data);
+ 	},(err)=>{
+ 		console.log(err);
+ 	})
   }
 
 }
