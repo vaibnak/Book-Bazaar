@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {User} from '../user';
 
 @Component({
   selector: 'app-register',
@@ -17,10 +18,12 @@ export class RegisterComponent implements OnInit {
 		address: new FormControl('')
 	})
 
-	myName:string;
+	user:User;
+
+
 
   constructor() { 
-  	this.myName = "vaibhav";
+  	
   }
 
   ngOnInit(): void {
@@ -30,7 +33,11 @@ export class RegisterComponent implements OnInit {
   	console.log("form submit function called");
   	console.log(this.registerForm.get('name').value)
   	console.log(this.registerForm.get('userName').value)
-  	
+  	this.user = new User(this.registerForm.get('name').value,this.registerForm.get('userName').value,
+  		this.registerForm.get('phoneNo').value,this.registerForm.get('password').value,this.registerForm.get('address').value);
+ 
+ 	console.log(this.user);
+
   }
 
 }
