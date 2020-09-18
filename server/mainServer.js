@@ -19,7 +19,7 @@ app.use(cors());
 app.use('/api/register',registerUserRoute);
 
 // endpoint to login the user
-app.user('/api/register',loginUserRoute);
+app.use('/api/login',loginUserRoute);
 
 
 

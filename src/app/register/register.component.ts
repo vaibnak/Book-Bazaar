@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {User} from '../user';
 import {ManageUsersService} from '../manage-users.service';
+import  {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-register',
@@ -23,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor(private manageUsersService:ManageUsersService) { 
+  constructor(private manageUsersService:ManageUsersService,public router:Router) { 
   	
   }
 
@@ -41,6 +43,7 @@ export class RegisterComponent implements OnInit {
  	this.manageUsersService.registerUser(this.user)
  	.subscribe((data)=>{
  		console.log(data);
+     this.router.navigateByUrl("/home");
  	},(err)=>{
  		console.log(err);
  	})

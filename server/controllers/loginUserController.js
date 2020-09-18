@@ -4,7 +4,7 @@ var mongodbUrl = "mongodb://localhost:27017/";
 
 function loginUser(req, res)
 {
-    mongoClient.connect(mongodbUrl, (err, dbHost)=>{
+    mongoClient.connect(mongodbUrl,{ useUnifiedTopology: true }, (err, dbHost)=>{
         if(err)
         {
             res.status(500);
@@ -49,4 +49,4 @@ function loginUser(req, res)
     })
 }
 
-module.exports = {checkUser};
+module.exports = {loginUser};

@@ -17,4 +17,9 @@ export class ManageUsersService {
   	return this.httpClient.post(myServerUrl,obj);
   }
 
+  loginUser(obj){
+  	var myServerUrl = this.myBaseServerUrl+"api/login";
+  	return this.httpClient.post(myServerUrl,obj);
+  }
+
 }
