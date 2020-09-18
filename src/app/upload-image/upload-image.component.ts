@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import {ManageUsersService} from '../manage-users.service';
 
 @Component({
   selector: 'app-upload-image',
@@ -14,13 +14,14 @@ export class UploadImageComponent implements OnInit {
    cardImageBase64: string;
 
    entryForm = new FormGroup({
+   		title: new FormControl(''),
 		author: new FormControl(''),
 		description: new FormControl(''),
 		price: new FormControl(''),
 	})
 
 
-  constructor() { }
+  constructor(private manageUsersService:ManageUsersService) { }
 
 
 
@@ -32,6 +33,14 @@ export class UploadImageComponent implements OnInit {
   	console.log(this.entryForm.get('author').value)
   	console.log(this.entryForm.get('description').value)
   	console.log(this.cardImageBase64)
+  	this.manageUsersService.uploadBook({title:this.entryForm.get('title').value,author: this.entryForm.get('author').value,description: this.entryForm.get('description').value,
+  		price: this.entryForm.get('price').value,image: this.cardImageBase64})
+ 	.subscribe((data)=>{
+ 		console.log(data);
+     
+ 	},(err)=>{
+ 		console.log(err);
+ 	})
   }
 
    fileChangeEvent(fileInput: any) {

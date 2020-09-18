@@ -22,4 +22,9 @@ export class ManageUsersService {
   	return this.httpClient.post(myServerUrl,obj);
   }
 
+  uploadBook(obj){
+    var myServerUrl = this.myBaseServerUrl+"api/upload";
+    return this.httpClient.post(myServerUrl,obj);
+  }
+
 }
