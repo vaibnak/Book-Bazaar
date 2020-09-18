@@ -1,0 +1,37 @@
+    <form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <fieldset class="form-group">
+
+                <label>Upload Logo</label>
+                {{imageError}}
+                <div class="custom-file fileInputProfileWrap">
+                    
+                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                    <br/>
+                    <label>Author: </label>
+                    <input type="text" name="author" formControlName = "author">
+                    <br/>
+                    <label>description: </label>
+                    <input type="text" name="description" formControlName="description">
+                    <br/>
+                    <label>price:</label>
+                    <input type="text" name="price" formControlName = "price">
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="img-space">
+
+                        <ng-container *ngIf="isImageSaved; else elseTemplate">
+                            <img [src]="cardImageBase64" />
+                        </ng-container>
+                        <ng-template #elseTemplate>
+
+                            <img src="./../../assets/novel.jpg" class="img-responsive">
+                        </ng-template>
+
+                    </div>
+
+                </div>
+            </fieldset>
+        </div>
+        <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+    </form>
