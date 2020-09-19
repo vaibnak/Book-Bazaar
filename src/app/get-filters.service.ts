@@ -16,7 +16,7 @@ export class GetFiltersService {
    }
 
    getFilterByAuthors(){
-   	let myServerUrl = this.myBaseServerUrl+"api/filterByAuthors";
+   	let myServerUrl = this.myBaseServerUrl+"api/filterByAuthor";
    	return this.httpClient.get(myServerUrl);
    }
 

@@ -29,8 +29,7 @@ export class ManageUsersService {
 
   getBook(){
     var myServerUrl = this.myBaseServerUrl+"api/getBook";
-    return this.httpClient.get(myServerUrl
-      )
+    return this.httpClient.get(myServerUrl)
   }
 
 }

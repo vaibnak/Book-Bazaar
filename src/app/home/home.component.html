@@ -70,25 +70,10 @@
 			  </div>
 
 			  <h5 class="mt-5">Author</h5>
-    		<div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">Mark Twain</label>
+    		<div *ngFor= "let aut of filterByAuthor" class="form-group form-check">
+			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)" [(ngModel)] = "aut.isChecked">
+			    <label class="form-check-label text-light" for="exampleCheck1">{{aut.id}}</label>
 			  </div>
-			<div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">Chetan Bhagat</label>
-			  </div>
-			  
-			 <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">Roman Saini</label>
-			  </div>
-
-			  <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">Ratan Tata</label>
-			  </div>
-
 
 			  <h5 class="mt-5">Released Date</h5>
     		<div class="form-group form-check">
@@ -127,7 +112,7 @@
 						      <h5 class="card-title">{{tmp.title}}</h5>
 						       <h6 class="card-subtitle mb-2 text-muted">{{tmp.price | currency: 'INR':true}}</h6>
 
-						      <p class="card-text" style="height: 150px;">{{tmp.description}}</p>
+						      <p class="card-text" style="height: 150px; overflow: hidden;">{{tmp.description}}</p>
 
 						      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
 						      <div class="d-flex justify-content-between mt-2">
