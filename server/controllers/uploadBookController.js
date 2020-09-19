@@ -24,7 +24,7 @@ function uploadBook(req, res)
                 {
                     var book = req.body;
                     console.log(book);
-                    coll.insertOne({title:book.title,author:book.author,description:book.description,price: book.price,image:book.image}, (err, result)=>{
+                    coll.insertOne({title:book.title,author:book.author,description:book.description,price: book.price,releaseYear:book.releaseYear, genere:book.genere, image:book.image}, (err, result)=>{
                             if(err)
                             {
                                 res.status(500);

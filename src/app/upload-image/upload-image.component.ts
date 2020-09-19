@@ -18,6 +18,8 @@ export class UploadImageComponent implements OnInit {
 		author: new FormControl(''),
 		description: new FormControl(''),
 		price: new FormControl(''),
+		releaseYear: new FormControl(''),
+		genere: new FormControl('')
 	})
 
 
@@ -34,7 +36,7 @@ export class UploadImageComponent implements OnInit {
   	console.log(this.entryForm.get('description').value)
   	console.log(this.cardImageBase64)
   	this.manageUsersService.uploadBook({title:this.entryForm.get('title').value,author: this.entryForm.get('author').value,description: this.entryForm.get('description').value,
-  		price: this.entryForm.get('price').value,image: this.cardImageBase64})
+  		price: this.entryForm.get('price').value,releaseYear: this.entryForm.get('releaseYear').value,genere: this.entryForm.get('genere').value,image: this.cardImageBase64})
  	.subscribe((data)=>{
  		console.log(data);
      
