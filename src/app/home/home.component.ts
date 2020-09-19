@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   displayLoading:boolean;
   books;
   booksArr;
+  isSelected;
   constructor(private manageUsersService:ManageUsersService) {
   		this.displayLoading = true;
    }
@@ -43,6 +44,10 @@ export class HomeComponent implements OnInit {
  //    	// console.log(arr)	
  //  }
 
+	}
+
+	check(e){
+		console.log(e.name);
 	}
 
 }
