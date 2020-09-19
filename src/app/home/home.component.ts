@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ManageUsersService} from '../manage-users.service';
+import { GetFiltersService } from '../get-filters.service';
+
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
   books;
   booksArr;
   isSelected;
-  constructor(private manageUsersService:ManageUsersService) {
+  constructor(private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService) {
   		this.displayLoading = true;
    }
 
@@ -26,6 +28,14 @@ export class HomeComponent implements OnInit {
  	},(err)=>{
  		console.log(err);
  	})
+
+ 	this.getFilterService.getFilterByAuthors()
+ 	.subscribe((data)=>{
+ 		console.log(data);
+ 	},(err)=>{
+ 		console.log(err);
+ 	})
+
   }
 
   createBooksArr(){
@@ -37,12 +47,6 @@ export class HomeComponent implements OnInit {
   		this.displayLoading = false;
   	}
   	console.log(this.booksArr);
-
-	// (this.books.length > 0){
- //   		let arr1 = this.books.splice(0,3);
- //    	this.booksArr.push(arr1);
- //    	// console.log(arr)	
- //  }
 
 	}
 

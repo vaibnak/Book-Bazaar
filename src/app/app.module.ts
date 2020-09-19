@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ManageUsersService } from './manage-users.service';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { GetFiltersService } from './get-filters.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
     HttpClientModule
 
   ],
-  providers: [ManageUsersService],
+  providers: [ManageUsersService,GetFiltersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
