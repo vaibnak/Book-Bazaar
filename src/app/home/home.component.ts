@@ -11,15 +11,19 @@ import {cloneDeep} from 'lodash';
 export class HomeComponent implements OnInit {
 
   displayLoading:boolean;
+  noResult:boolean;
   books;
-  tmpBooks;
   booksArr;
-  isSelected;
   filterByAuthor;
   filterByGenere;
   filterByYear;
+  currentBook;
+  currentAuthor;
+  currentGenere;
+  currentYear;
   constructor(private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService) {
   		this.displayLoading = true;
+  		this.noResult = false;
    }
 
   ngOnInit(): void {
@@ -28,8 +32,9 @@ export class HomeComponent implements OnInit {
  		console.log(data);
  		// this.displayLoading = false;
  		this.books = data;
- 		this.tmpBooks = cloneDeep(this.books);
- 		this.createBooksArr();
+ 		this.currentBook = cloneDeep(this.books); 
+ 		let tmpBooks = cloneDeep(this.books);
+ 		this.createBooksArr(tmpBooks);
  	},(err)=>{
  		console.log(err);
  	})
@@ -58,11 +63,11 @@ export class HomeComponent implements OnInit {
 
   }
 
-  createBooksArr(){
+  createBooksArr(tmpBooks){
 
   	this.booksArr = [];
-  	while(this.tmpBooks.length > 0){
-  		let arr1 = this.tmpBooks.splice(0,3);
+  	while(tmpBooks.length > 0){
+  		let arr1 = tmpBooks.splice(0,3);
   		this.booksArr.push(arr1);
   		this.displayLoading = false;
   	}
@@ -70,83 +75,71 @@ export class HomeComponent implements OnInit {
 	}
 
 	checkByAuthor(e){
-		
-		let currentAuthor = this.filterByAuthor.filter((aut)=> aut.isChecked == true);
-		currentAuthor = currentAuthor.map((aut)=> aut.id);
-		
-		if(currentAuthor.length == 0){
-			
-			this.tmpBooks = cloneDeep(this.books);
-			this.createBooksArr();
-			return;
-		}else{
-			this.filterBookByAuthor(currentAuthor);	
-		}
-
-		
+		// let cur = this.filterByAuthor.filter((aut)=> aut.isChecked == true);
+		this.currentAuthor = this.filterByAuthor.filter((aut)=> aut.isChecked == true);
+		this.currentAuthor = this.currentAuthor.map((aut)=> aut.id);
+		this.filterBook();	
 	}
-
-	filterBookByAuthor(currentAuthor){
 		
-		let tmpBooks1 = this.books.filter((b)=>{
-			
-			return currentAuthor.includes(b.author)
-		});
-		
-		this.tmpBooks = tmpBooks1;
-		this.createBooksArr();
-	}
 
 	checkByGenere(e){
-		let currentGenere = this.filterByGenere.filter((gen)=>gen.isChecked == true);
-		currentGenere = currentGenere.map((gen)=>gen.id);
-
-		if(currentGenere.length == 0){
-			this.tmpBooks = cloneDeep(this.books);
-			this.createBooksArr();
-			return;
-		}else{
-			this.filterBookByGenere(currentGenere);
-		}
-	}
-
-	filterBookByGenere(currentGenere){
-		
-		let tmpBooks1 = this.books.filter((b)=>{
-			
-			return currentGenere.includes(b.genere)
-		});
-		
-		this.tmpBooks = tmpBooks1;
-		this.createBooksArr();
+		this.currentGenere = this.filterByGenere.filter((gen)=>gen.isChecked == true);
+		this.currentGenere = this.currentGenere.map((gen)=>gen.id);
+		this.filterBook();
 	}
 
 	checkByYear(e){
-		let currentYear = this.filterByYear.filter((yr)=>yr.isChecked == true);
-		if(currentYear.length == 0){
-			this.tmpBooks = cloneDeep(this.books);
-			this.createBooksArr();
-			return;
-		}else{
-			this.filterBookByYear(currentYear);
-		}
+		this.currentYear = this.filterByYear.filter((yr)=>yr.isChecked == true);
+		this.filterBook();
 	}
 
-	filterBookByYear(currentYear){
-		console.log("currentYear", currentYear);
-		let tmpBooks1 = this.books.filter((b)=>{
-			console.log("checking: ",b.releaseYear);
-			let yr = Number(b.releaseYear);
-			console.log("checking: ",yr);
-			for(let year of currentYear){
-				if((yr>=year.startYear)&&(yr<= year.endYear)){
-					return true;
+	filterBook(){
+		this.currentBook = cloneDeep(this.books);
+		console.log("this.currentAuthor", typeof this.currentAuthor)
+		if(this.currentAuthor === undefined){
+			console.log("currentAuthor is undefined");
+		}
+		if((this.currentAuthor !== undefined && (this.currentAuthor.length > 0))){
+			this.currentBook = this.currentBook.filter((b)=>{	
+				return this.currentAuthor.includes(b.author)
+			});
+		}
+		
+		if((this.currentGenere !== undefined && (this.currentGenere.length > 0))){
+			
+			this.currentBook = this.currentBook.filter((b)=>{	
+				return this.currentGenere.includes(b.genere)
+			});			
+		}
+
+
+		if((this.currentYear !== undefined) && ((this.currentYear.length > 0))){
+			this.currentBook = this.currentBook.filter((b)=>{
+				let yr = Number(b.releaseYear);
+				for(let year of this.currentYear){
+					if((yr>=year.startYear)&&(yr<= year.endYear)){
+						return true;
+					}
 				}
-			}
-			return false;
-		})
-		this.tmpBooks = tmpBooks1;
-		this.createBooksArr();
+				return false;
+			})	
+		}
+		
+
+		if(((this.currentAuthor !== undefined) && (this.currentAuthor.length == 0))&&((this.currentGenere !== undefined) && (this.currentGenere.length==0))&&((this.currentYear !== undefined) &&  this.currentYear.length == 0)){
+			let tmpBooks = cloneDeep(this.books);
+			this.createBooksArr(tmpBooks);
+			return;
+		}
+
+		if(this.currentBook.length == 0){
+			this.noResult = true;
+		}else{
+			let tmpBooks = cloneDeep(this.currentBook);
+			this.createBooksArr(tmpBooks);
+		}
+
+
 	}
 
 
