@@ -25,6 +25,12 @@ export class GetFiltersService {
    	return this.httpClient.get(myServerUrl);
    }
 
+   getFilterByYear(){
+     console.log("filterByYear called")
+    let myServerUrl = this.myBaseServerUrl+"api/filterByYear";
+    return this.httpClient.get(myServerUrl); 
+   }
+
 
 
 

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   isSelected;
   filterByAuthor;
   filterByGenere;
+  filterByYear;
   constructor(private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService) {
   		this.displayLoading = true;
    }
@@ -35,7 +36,6 @@ export class HomeComponent implements OnInit {
 
  	this.getFilterService.getFilterByAuthors()
  	.subscribe((data)=>{
- 		console.log(data);
  		this.filterByAuthor = data;
  	},(err)=>{
  		console.log(err);
@@ -43,8 +43,15 @@ export class HomeComponent implements OnInit {
 
  	this.getFilterService.getFilterByGenere()
  	.subscribe((data)=>{
- 		console.log(data);
  		this.filterByGenere = data;
+ 	},(err)=>{
+ 		console.log(err);
+ 	})
+
+ 	this.getFilterService.getFilterByYear()
+ 	.subscribe((data)=>{
+ 		console.log("year",data);
+ 		this.filterByYear = data;
  	},(err)=>{
  		console.log(err);
  	})
@@ -110,6 +117,34 @@ export class HomeComponent implements OnInit {
 			return currentGenere.includes(b.genere)
 		});
 		
+		this.tmpBooks = tmpBooks1;
+		this.createBooksArr();
+	}
+
+	checkByYear(e){
+		let currentYear = this.filterByYear.filter((yr)=>yr.isChecked == true);
+		if(currentYear.length == 0){
+			this.tmpBooks = cloneDeep(this.books);
+			this.createBooksArr();
+			return;
+		}else{
+			this.filterBookByYear(currentYear);
+		}
+	}
+
+	filterBookByYear(currentYear){
+		console.log("currentYear", currentYear);
+		let tmpBooks1 = this.books.filter((b)=>{
+			console.log("checking: ",b.releaseYear);
+			let yr = Number(b.releaseYear);
+			console.log("checking: ",yr);
+			for(let year of currentYear){
+				if((yr>=year.startYear)&&(yr<= year.endYear)){
+					return true;
+				}
+			}
+			return false;
+		})
 		this.tmpBooks = tmpBooks1;
 		this.createBooksArr();
 	}

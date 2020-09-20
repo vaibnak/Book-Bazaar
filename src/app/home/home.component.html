@@ -61,25 +61,11 @@
 			    <label class="form-check-label text-light" for="exampleCheck1">{{aut.id}}</label>
 			  </div>
 
-			  <!-- <h5 class="mt-5">Released Date</h5>
-    		<div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">2015</label>
+			  <h5 class="mt-5">Year</h5>
+    		<div *ngFor= "let yr of filterByYear" class="form-group form-check">
+			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="checkByYear($event)" [(ngModel)] = "yr.isChecked">
+			    <label class="form-check-label text-light" for="exampleCheck1">{{yr.startYear}} - {{yr.endYear}}</label>
 			  </div>
-			<div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">2016</label>
-			  </div>
-			  
-			 <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">2017</label>
-			  </div>
-
-			  <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">2018</label>
-			  < /div>-->
     	</div>
     	<div class="col-10 bg-secondary p-5">
 
