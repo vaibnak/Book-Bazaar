@@ -148,6 +148,13 @@ export class HomeComponent implements OnInit {
 	addEventHandler(book){
 		console.log("userName: ",this.userName);
 		console.log("bookClicked: ",book);
+		this.manageUsersService.storeUserBook({userName:this.userName,book:book})
+ 		.subscribe((data)=>{
+ 			console.log(data);
+ 			// this.displayLoading = false;
+ 		},(err)=>{
+ 			console.log(err);
+ 		})
 	}
 
 

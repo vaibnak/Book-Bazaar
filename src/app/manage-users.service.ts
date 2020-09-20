@@ -32,4 +32,9 @@ export class ManageUsersService {
     return this.httpClient.get(myServerUrl)
   }
 
+  storeUserBook(obj){
+    let myServerUrl = this.myBaseServerUrl+"api/storeUserBook";
+    return this.httpClient.post(myServerUrl,obj);
+   }
+
 }
