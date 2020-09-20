@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ManageUsersService} from '../manage-users.service';
 import { GetFiltersService } from '../get-filters.service';
+import { ActivatedRoute,Router } from "@angular/router";
 import {cloneDeep} from 'lodash';
 
 @Component({
@@ -21,9 +22,11 @@ export class HomeComponent implements OnInit {
   currentAuthor;
   currentGenere;
   currentYear;
-  constructor(private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService) {
+  userName:string;
+  constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService) {
   		this.displayLoading = true;
   		this.noResult = false;
+  		this.userName = this.route.snapshot.paramMap.get('userName');
    }
 
   ngOnInit(): void {
@@ -140,6 +143,11 @@ export class HomeComponent implements OnInit {
 		}
 
 
+	}
+
+	addEventHandler(book){
+		console.log("userName: ",this.userName);
+		console.log("bookClicked: ",book);
 	}
 
 

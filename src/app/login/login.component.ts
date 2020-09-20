@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
  		console.log(data);
  		var tempObj:any=data["message"];
       	if(tempObj == true){
-        	this.router.navigateByUrl("/home");
+        	this.router.navigate(["/home",this.loginForm.get('userName').value]);
       	}
  	},(err)=>{
  		console.log(err);

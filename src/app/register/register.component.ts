@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
  	this.manageUsersService.registerUser(this.user)
  	.subscribe((data)=>{
  		console.log(data);
-     this.router.navigateByUrl("/home");
+     this.router.navigate(["/home",this.registerForm.get('userName').value]);
  	},(err)=>{
  		console.log(err);
  	})
