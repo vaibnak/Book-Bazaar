@@ -12,7 +12,7 @@ var loginUserRoute = require('./routes/loginUserRoute');
 var uploadBookRoute = require('./routes/uploadBookRoute');
 var getBookRoute = require('./routes/getBookRoute');
 var filterByAuthorRoute = require('./routes/filterByAuthorRoute');
-var filterByGenereRoute = require('./routes/filterByGenere');
+var filterByGenereRoute = require('./routes/filterByGenereRoute');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -36,7 +36,7 @@ app.use('/api/getBook',getBookRoute);
 app.use('/api/filterByAuthor',filterByAuthorRoute)
 
 // endpoint to get all the book genere
-app.user('/api/filterByGenere',filterByGenereRoute);
+app.use('/api/filterByGenere',filterByGenereRoute);
 
 
 

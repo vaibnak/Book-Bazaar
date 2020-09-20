@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   booksArr;
   isSelected;
   filterByAuthor;
+  filterByGenere;
   constructor(private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService) {
   		this.displayLoading = true;
    }
@@ -40,6 +41,14 @@ export class HomeComponent implements OnInit {
  		console.log(err);
  	})
 
+ 	this.getFilterService.getFilterByGenere()
+ 	.subscribe((data)=>{
+ 		console.log(data);
+ 		this.filterByGenere = data;
+ 	},(err)=>{
+ 		console.log(err);
+ 	})
+
   }
 
   createBooksArr(){
@@ -53,7 +62,7 @@ export class HomeComponent implements OnInit {
 
 	}
 
-	check(e){
+	checkByAuthor(e){
 		
 		let currentAuthor = this.filterByAuthor.filter((aut)=> aut.isChecked == true);
 		currentAuthor = currentAuthor.map((aut)=> aut.id);
@@ -80,6 +89,31 @@ export class HomeComponent implements OnInit {
 		this.tmpBooks = tmpBooks1;
 		this.createBooksArr();
 	}
+
+	checkByGenere(e){
+		let currentGenere = this.filterByGenere.filter((gen)=>gen.isChecked == true);
+		currentGenere = currentGenere.map((gen)=>gen.id);
+
+		if(currentGenere.length == 0){
+			this.tmpBooks = cloneDeep(this.books);
+			this.createBooksArr();
+			return;
+		}else{
+			this.filterBookByGenere(currentGenere);
+		}
+	}
+
+	filterBookByGenere(currentGenere){
+		
+		let tmpBooks1 = this.books.filter((b)=>{
+			
+			return currentGenere.includes(b.genere)
+		});
+		
+		this.tmpBooks = tmpBooks1;
+		this.createBooksArr();
+	}
+
 
 }
 

@@ -49,33 +49,19 @@
     	<div class="col-2 bg-primary text-light">
     		<h3 class="text-center mt-5">Filters</h3>
     		{{isSelected}}
-    		<h5 class="mt-5">Book category</h5>
-    		<div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" name="fiction" id="exampleCheck1" (change)="check($event)" [(ngModel)]="isSelected">
-			    <label class="form-check-label text-light" for="exampleCheck1" >Fiction</label>
+    		<h5 class="mt-5">Genere</h5>
+    		<div *ngFor= "let gen of filterByGenere" class="form-group form-check">
+			    <input type="checkbox" class="form-check-input" name="fiction" id="exampleCheck1" (change)="checkByGenere($event)" [(ngModel)]="gen.isChecked">
+			    <label class="form-check-label text-light" for="exampleCheck1" >{{gen.id}}</label>
 			  </div>
-			<div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">Horror</label>
-			  </div>
-			  
-			 <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">Feel good</label>
-			  </div>
-
-			  <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
-			    <label class="form-check-label text-light" for="exampleCheck1">Romantic</label>
-			  </div>
-
+			
 			  <h5 class="mt-5">Author</h5>
     		<div *ngFor= "let aut of filterByAuthor" class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)" [(ngModel)] = "aut.isChecked">
+			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="checkByAuthor($event)" [(ngModel)] = "aut.isChecked">
 			    <label class="form-check-label text-light" for="exampleCheck1">{{aut.id}}</label>
 			  </div>
 
-			  <h5 class="mt-5">Released Date</h5>
+			  <!-- <h5 class="mt-5">Released Date</h5>
     		<div class="form-group form-check">
 			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
 			    <label class="form-check-label text-light" for="exampleCheck1">2015</label>
@@ -93,11 +79,11 @@
 			  <div class="form-group form-check">
 			    <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="check($event)">
 			    <label class="form-check-label text-light" for="exampleCheck1">2018</label>
-			  </div>
+			  < /div>-->
     	</div>
     	<div class="col-10 bg-secondary p-5">
 
-    		<h2 class="text-center mt-5 mb-5 text-light">Top trending books of the month</h2>
+    		<h2 class="text-center mt-5 mb-5 text-light">Top Recommendations for YOu</h2>
 
     		<div *ngIf="displayLoading">
     			<h2>Loading...</h2>

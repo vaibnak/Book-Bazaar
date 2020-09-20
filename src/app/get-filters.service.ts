@@ -20,6 +20,11 @@ export class GetFiltersService {
    	return this.httpClient.get(myServerUrl);
    }
 
+   getFilterByGenere(){
+   	let myServerUrl = this.myBaseServerUrl+"api/filterByGenere";
+   	return this.httpClient.get(myServerUrl);
+   }
+
 
 
 

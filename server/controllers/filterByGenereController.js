@@ -1,7 +1,7 @@
 var mongoClient = require("mongodb").MongoClient;
 var mongodbUrl = "mongodb://localhost:27017/";
 
-function filterByAuthor(req,res){
+function filterByGenere(req,res){
 
 	mongoClient.connect(mongodbUrl,{useUnifiedTopology:true},(err,dbHost)=>{
 		if(err){
