@@ -12,14 +12,17 @@ export class CheckoutComponent implements OnInit {
 
   userName:string;
   userBook;
+  total:number;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService) {
   	this.userName = this.route.snapshot.paramMap.get('userName');
   	console.log(this.userName);
+    this.total = 0;
    }
 
   ngOnInit(): void {
   	console.log("in ngOnInit");
   	let tmpArray = [];
+
   	this.manageUsersService.getUserBook({user: this.userName})
  	.subscribe((data)=>{
  		console.log("books by the user:",data);
@@ -31,6 +34,7 @@ export class CheckoutComponent implements OnInit {
 		 		console.log(data);
 		 		for(let tmp of data){
 		 			tmpArray.push(tmp)
+          this.total += Number(tmp.price)  
 		 		}
 		 	},(err)=>{
 		 		console.log(err);
