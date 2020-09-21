@@ -37,6 +37,16 @@ export class ManageUsersService {
     return this.httpClient.post(myServerUrl,obj);
    }
 
- 
+   getUserBook(obj){
+    let myServerUrl = this.myBaseServerUrl+"api/getUserBook";
+    return this.httpClient.post(myServerUrl,obj); 
+   }
+
+   getBookFromBooks(obj){
+     let myServerUrl = this.myBaseServerUrl+"api/getBookFromBooks";
+    return this.httpClient.post(myServerUrl,obj);
+   }
+
+
 
 }
