@@ -67,9 +67,9 @@
 
 					      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
 					      <div class="d-flex justify-content-between mt-2">
-					      	<a href="" class="btn btn-primary">View</a>
+					      	<a href="" class="btn btn-primary">Quantity</a>
 
-						    <a class="btn btn-primary text-right">Add to cart</a>	
+						    <a class="btn btn-danger text-right" (click)="removeItemEventHandler(tmp.title)">Remove from cart</a>	
 						      </div> 
 					      
 					    </div>

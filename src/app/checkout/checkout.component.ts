@@ -47,4 +47,10 @@ export class CheckoutComponent implements OnInit {
  	})
   }
 
+  removeItemEventHandler(){
+  
+  }
+
 }
+
+

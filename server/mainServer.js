@@ -17,6 +17,8 @@ var filterByYearRoute = require('./routes/filterByYearRoute');
 var storeUserBookRoute = require('./routes/storeUserBookRoute');
 var getUserBookRoute = require('./routes/getUserBookRoute');
 var getBookFromBooksRoute = require('./routes/getBookFromBooksRoute');
+var removeUserBookRoute = require('./routes/removeUserBookRoute');
+
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -53,6 +55,9 @@ app.use('/api/getUserBook',getUserBookRoute);
 
 // endpoint to get one book from the set of books
 app.use('/api/getBookFromBooks',getBookFromBooksRoute)
+
+// endpoint to remove book
+app.use('/api/removeUserBook',removeUserBookRoute);
 
 
 
