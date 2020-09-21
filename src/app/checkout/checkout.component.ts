@@ -25,14 +25,16 @@ export class CheckoutComponent implements OnInit {
 
   	this.manageUsersService.getUserBook({user: this.userName})
  	.subscribe((data)=>{
- 		console.log("books by the user:",data);
+ 		// console.log("books by the user:",data);
  		// this.displayLoading = false;
  		for(let b of data){
- 			console.log("each book data",b);
+ 			// console.log("each book data",b);
  			this.manageUsersService.getBookFromBooks({title: b.book})
 		 	.subscribe((data)=>{
 		 		console.log(data);
 		 		for(let tmp of data){
+          tmp.quantity = b.quantity;
+          console.log("modified tmp: ",tmp); 
 		 			tmpArray.push(tmp)
           this.total += Number(tmp.price)  
 		 		}
@@ -89,6 +91,12 @@ export class CheckoutComponent implements OnInit {
   homeEventHandler(){
     this.router.navigate(["/home",this.userName]);
   }
+
+  changeQuantityEventHandler(title,quantity){
+    console.log("title: ",title);
+    console.log("quantity: ",quantity);
+  }
+
 
 }
 

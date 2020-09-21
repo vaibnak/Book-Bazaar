@@ -24,7 +24,7 @@ function storeUserBook(req, res)
                 {
                     var userBook = req.body;
                     console.log(userBook);
-                    coll.insertOne({user:userBook.userName,book:userBook.book}, (err, result)=>{
+                    coll.insertOne({user:userBook.userName,book:userBook.book,quantity:userBook.quantity}, (err, result)=>{
                             if(err)
                             {
                                 res.status(500);

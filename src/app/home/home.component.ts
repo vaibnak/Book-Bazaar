@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit {
 		e.target.className = "btn btn-success dis";
 		// e.disabled = true;
 
-		this.manageUsersService.storeUserBook({userName:this.userName,book:book})
+		this.manageUsersService.storeUserBook({userName:this.userName,book:book,quantity:1})
  		.subscribe((data)=>{
  			console.log(data);
  			// this.displayLoading = false;
