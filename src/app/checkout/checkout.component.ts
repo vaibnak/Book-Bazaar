@@ -25,8 +25,8 @@ export class CheckoutComponent implements OnInit {
 
   	this.manageUsersService.getUserBook({user: this.userName})
  	.subscribe((data)=>{
- 		// console.log("books by the user:",data);
- 		// this.displayLoading = false;
+ 		console.log("books by the user:",data);
+ 		this.displayLoading = false;
  		for(let b of data){
  			// console.log("each book data",b);
  			this.manageUsersService.getBookFromBooks({title: b.book})

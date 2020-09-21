@@ -93,7 +93,9 @@
 							      <div class="d-flex justify-content-between mt-2">
 							      	<a href="" class="btn btn-primary">View</a>
 
-								    <a class="btn btn-primary text-right" (click)="addEventHandler($event,tmp.title)">Add to cart</a>	
+								    <a *ngIf="!tmp.isSelected" class="btn btn-primary text-right" (click)="addEventHandler($event,tmp.title)">Add to cart</a>
+
+								    <a *ngIf="tmp.isSelected" class="btn btn-success text-right dis" (click)="addEventHandler($event,tmp.title)">Added</a>	
 								      </div> 
 							      
 							    </div>

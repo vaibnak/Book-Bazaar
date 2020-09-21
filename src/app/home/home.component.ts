@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   currentGenere;
   currentYear;
   userName:string;
+  userBook;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService,public router:Router) {
   		this.displayLoading = true;
   		this.noResult = false;
@@ -30,6 +31,17 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+  	this.manageUsersService.getUserBook({user: this.userName})
+  	.subscribe((data)=>{
+  		this.userBook = data;
+  		this.userBook = this.userBook.map((b)=>b.book);
+  		console.log("book selected by user: ",this.userBook);
+  		this.getBook();
+  	},(err)=>{
+  		console.log(err);
+  	})
+
   	this.manageUsersService.getBook()
  	.subscribe((data)=>{
  		console.log(data);
@@ -161,6 +173,28 @@ export class HomeComponent implements OnInit {
 
 	checkoutEventHandler(){
 		this.router.navigate(["/checkout",this.userName]);
+	}
+
+	getBook(){
+		  	this.manageUsersService.getBook()
+		 	.subscribe((data)=>{
+		 		console.log(data);
+		 		// this.displayLoading = false;
+		 		this.books = data;
+		 		for(let b of this.books){
+		 			if(this.userBook.includes(b.title)){
+		 				b.isSelected = true;
+		 			}else{
+		 				b.isSelected = false;
+		 			}
+		 		}
+		 		console.log("updated this.books: ",this.books);
+		 		this.currentBook = cloneDeep(this.books); 
+		 		let tmpBooks = cloneDeep(this.books);
+		 		this.createBooksArr(tmpBooks);
+		 	},(err)=>{
+		 		console.log(err);
+		 	})
 	}
 
 

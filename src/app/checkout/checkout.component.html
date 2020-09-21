@@ -68,7 +68,7 @@
 					      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
 					      <div class="d-flex justify-content-between mt-2">
 					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity+1)">+</a>
-					      	{{tmp.quantity}}
+					      	quantity : {{tmp.quantity}}
 					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity-1)">-</a>
 
 						    <a class="btn btn-danger text-right" (click)="removeItemEventHandler(tmp.title)">Remove from cart</a>	
