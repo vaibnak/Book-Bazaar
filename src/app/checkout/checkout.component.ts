@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,Router } from "@angular/router";
 
 @Component({
   selector: 'app-checkout',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  userName:string;
+  constructor(public route:ActivatedRoute) {
+  	this.userName = this.route.snapshot.paramMap.get('userName');
+  	console.log(this.userName);
+   }
 
   ngOnInit(): void {
   }

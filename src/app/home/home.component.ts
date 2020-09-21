@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   currentGenere;
   currentYear;
   userName:string;
-  constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService) {
+  constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService,public router:Router) {
   		this.displayLoading = true;
   		this.noResult = false;
   		this.userName = this.route.snapshot.paramMap.get('userName');
@@ -157,6 +157,10 @@ export class HomeComponent implements OnInit {
  		},(err)=>{
  			console.log(err);
  		})
+	}
+
+	checkoutEventHandler(){
+		this.router.navigate(["/checkout",this.userName]);
 	}
 
 
