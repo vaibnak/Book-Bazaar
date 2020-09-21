@@ -47,6 +47,11 @@ export class ManageUsersService {
     return this.httpClient.post(myServerUrl,obj);
    }
 
+   removeUserBook(obj){
+    let myServerUrl = this.myBaseServerUrl+"api/removeUserBook";
+    return this.httpClient.post(myServerUrl,obj); 
+   }
+
 
 
 }

@@ -47,8 +47,15 @@ export class CheckoutComponent implements OnInit {
  	})
   }
 
-  removeItemEventHandler(){
-  
+  removeItemEventHandler(title){
+    this.manageUsersService.removeUserBook({userName:this.userName,book:title})
+     .subscribe((data)=>{
+       console.log(data);
+       // this.displayLoading = false;
+     },(err)=>{
+       console.log(err);
+     })
+
   }
 
 }
