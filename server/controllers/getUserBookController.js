@@ -24,7 +24,7 @@ function getUserBook(req, res)
                 {
                     var user = req.body;
                     console.log(user);
-                    coll.find({user:user}, (err, result)=>{
+                    coll.find({user:user.user}).toArray((err, result)=>{
                             if(err)
                             {
                                 res.status(500);
@@ -34,6 +34,7 @@ function getUserBook(req, res)
                             {
                                 if(result)
                                 {
+                                    console.log(result)
                                     res.status(200);
                                     res.json(result);
                                 }

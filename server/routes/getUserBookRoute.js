@@ -3,6 +3,6 @@ var router = express.Router();
 
 var getUserBookController = require("../controllers/getUserBookController");
 
-router.get("/",getUserBookController.getUserBook);
+router.post("/",getUserBookController.getUserBook);
 
 module.exports = router;
