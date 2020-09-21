@@ -47,10 +47,36 @@ export class CheckoutComponent implements OnInit {
  	})
   }
 
+  getUserBook(){
+    this.manageUsersService.getUserBook({user: this.userName})
+     .subscribe((data)=>{
+       console.log("books by the user:",data);
+       // this.displayLoading = false;
+       for(let b of data){
+         console.log("each book data",b);
+         this.manageUsersService.getBookFromBooks({title: b.book})
+         .subscribe((data)=>{
+           console.log(data);
+           for(let tmp of data){
+             tmpArray.push(tmp)
+            this.total += Number(tmp.price)  
+           }
+         },(err)=>{
+           console.log(err);
+         })
+       }
+       this.userBook = tmpArray;
+       console.log("userBook: ",this.userBook);
+     },(err)=>{
+       console.log(err);
+     })
+  }
+
   removeItemEventHandler(title){
     this.manageUsersService.removeUserBook({userName:this.userName,book:title})
      .subscribe((data)=>{
        console.log(data);
+       getUserBook();
        // this.displayLoading = false;
      },(err)=>{
        console.log(err);
