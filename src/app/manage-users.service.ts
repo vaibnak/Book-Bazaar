@@ -52,6 +52,10 @@ export class ManageUsersService {
     return this.httpClient.post(myServerUrl,obj); 
    }
 
+   updateQuantity(obj){
+    let myServerUrl = this.myBaseServerUrl+"api/updateQuantity";
+    return this.httpClient.post(myServerUrl,obj);  
+   }
 
 
 }

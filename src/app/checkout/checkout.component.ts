@@ -36,7 +36,7 @@ export class CheckoutComponent implements OnInit {
           tmp.quantity = b.quantity;
           console.log("modified tmp: ",tmp); 
 		 			tmpArray.push(tmp)
-          this.total += Number(tmp.price)  
+          this.total += Number(tmp.price*tmp.quantity)  
 		 		}
 		 	},(err)=>{
 		 		console.log(err);
@@ -62,8 +62,9 @@ export class CheckoutComponent implements OnInit {
          .subscribe((data)=>{
            console.log(data);
            for(let tmp of data){
+             tmp.quantity = b.quantity;
              tmpArray.push(tmp)
-            this.total += Number(tmp.price)  
+            this.total += Number(tmp.price*tmp.quantity)  
            }
          },(err)=>{
            console.log(err);
@@ -95,6 +96,14 @@ export class CheckoutComponent implements OnInit {
   changeQuantityEventHandler(title,quantity){
     console.log("title: ",title);
     console.log("quantity: ",quantity);
+    this.manageUsersService.updateQuantity({userName:this.userName,book:title,quantity:quantity})
+     .subscribe((data)=>{
+       console.log(data);
+       this.getUserBook();
+       // this.displayLoading = false;
+     },(err)=>{
+       console.log(err);
+     })    
   }
 
 
