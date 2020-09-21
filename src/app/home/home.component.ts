@@ -145,9 +145,11 @@ export class HomeComponent implements OnInit {
 
 	}
 
-	addEventHandler(book){
-		console.log("userName: ",this.userName);
-		console.log("bookClicked: ",book);
+	addEventHandler(e,book){
+		e.target.childNodes[0].textContent = "Added";
+		e.target.className = "btn btn-success dis";
+		// e.disabled = true;
+
 		this.manageUsersService.storeUserBook({userName:this.userName,book:book})
  		.subscribe((data)=>{
  			console.log(data);

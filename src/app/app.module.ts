@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ManageUsersService } from './manage-users.service';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { GetFiltersService } from './get-filters.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GetFiltersService } from './get-filters.service';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

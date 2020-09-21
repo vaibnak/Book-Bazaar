@@ -92,7 +92,8 @@
 							      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
 							      <div class="d-flex justify-content-between mt-2">
 							      	<a href="" class="btn btn-primary">View</a>
-								      <a class="btn btn-primary text-right" (click)="addEventHandler(tmp.title)">Add to cart</a>	
+
+								    <a class="btn btn-primary text-right" (click)="addEventHandler($event,tmp.title)">Add to cart</a>	
 								      </div> 
 							      
 							    </div>
