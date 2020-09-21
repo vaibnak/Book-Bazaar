@@ -14,7 +14,7 @@
 			    </form>
 			    <ul class="navbar-nav mr-auto">
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" href="#" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+			        <a class="nav-link" (click)="homeEventHandler()">Home <span class="sr-only">(current)</span></a>
 			      </li>
 			      <li class="nav-item ml-2">
 			        <a class="nav-link" href="#">About Us</a>
@@ -46,8 +46,8 @@
 				<div class="card-header">TOTAL</div>
 			  <div class="card-body">
 			    <p class="card-text">your order : {{this.total | currency: 'INR':true}}</p>
-			    <p class="card-text">GST : {{(this.total*18)/100}} (18%)</p>
-			    <p class="card-text">Total : {{this.total + (this.total*18)/100}}</p>
+			    <p class="card-text">GST : {{(this.total*18)/100 | currency: 'INR':true}} (18%) </p>
+			    <p class="card-text">Total : {{this.total + (this.total*18)/100 | currency: 'INR':true}}</p>
 			    <a class="btn btn-primary">Place order</a>
 
 			  </div>

@@ -13,7 +13,7 @@ export class CheckoutComponent implements OnInit {
   userName:string;
   userBook;
   total:number;
-  constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService) {
+  constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService,public router:Router) {
   	this.userName = this.route.snapshot.paramMap.get('userName');
   	console.log(this.userName);
     this.total = 0;
@@ -48,6 +48,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   getUserBook(){
+    let tmpArray = [];
+    this.total = 0;
     this.manageUsersService.getUserBook({user: this.userName})
      .subscribe((data)=>{
        console.log("books by the user:",data);
@@ -76,12 +78,16 @@ export class CheckoutComponent implements OnInit {
     this.manageUsersService.removeUserBook({userName:this.userName,book:title})
      .subscribe((data)=>{
        console.log(data);
-       getUserBook();
+       this.getUserBook();
        // this.displayLoading = false;
      },(err)=>{
        console.log(err);
      })
 
+  }
+
+  homeEventHandler(){
+    this.router.navigate(["/home",this.userName]);
   }
 
 }
