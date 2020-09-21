@@ -13,6 +13,7 @@ import { ManageUsersService } from './manage-users.service';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { GetFiltersService } from './get-filters.service';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     RegisterComponent,
     HomeComponent,
     UploadImageComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
