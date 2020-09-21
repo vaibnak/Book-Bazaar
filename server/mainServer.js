@@ -15,6 +15,8 @@ var filterByAuthorRoute = require('./routes/filterByAuthorRoute');
 var filterByGenereRoute = require('./routes/filterByGenereRoute');
 var filterByYearRoute = require('./routes/filterByYearRoute');
 var storeUserBookRoute = require('./routes/storeUserBookRoute');
+var getUserBookRoute = require('./routes/getUserBookRoute');
+
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -45,6 +47,9 @@ app.use('/api/filterByYear',filterByYearRoute);
 
 // endpoint to store the userBook
 app.use('/api/storeUserBook',storeUserBookRoute);
+
+// endpoint to get the books of the user
+app.use('/api/getUserBook',getUserBookRoute);
 
 
 
