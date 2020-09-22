@@ -43,11 +43,17 @@
 			</nav>
 		</div>
 	</div>
+
+
 	
 	<div class="row">
-		<div class="col-8 offset-2">
-		<!-- 	<h1 class="text-center col-12 mt-5">Books in your Cart</h1>
-			<div *ngFor="let tmp of userBook;let i=index" class="card-deck mt-2">
+		<h1 *ngIf="!notLogged" class="text-center col-12 mt-5">Your Previous Orders</h1>
+		<h1 *ngIf="notLogged" class="text-center col-12 mt-5">Kindly Log in to view your orders</h1>
+	</div>
+
+	<div class="row">
+		<div *ngIf="!notLogged" class="col-8 offset-2">
+			<div *ngFor="let tmp of orderedBook;let i=index" class="card-deck mt-5">
 	    		<div class="row">
     				<div class="card col-4 text-center border border-primary bg-warning p-2">
 					    <img class="card-img-top" [src]="tmp.image" alt="Card image cap" style="max-height: 300px; min-height: 300px;">
@@ -58,19 +64,15 @@
 					      <p class="card-text" style="height: 150px; overflow: hidden;">{{tmp.description}}</p>
 
 					      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
-					      <div class="d-flex justify-content-between mt-2">
-					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity+1)">+</a>
-					      	quantity : {{tmp.quantity}}
-					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity-1)">-</a>
-
-						    <a class="btn btn-danger text-right" (click)="removeItemEventHandler(tmp.title)">Remove from cart</a>	
-						      </div> 
+				
+					      <p class="card-text">	quantity : {{tmp.quantity}}
+							</p>					       
 					      
 					    </div>
 			    	</div>
 			    </div>
 			</div>
-		 -->
+		
 			
 		</div>
 		

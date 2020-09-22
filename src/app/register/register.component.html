@@ -16,25 +16,29 @@
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			    <ul class="navbar-nav mr-auto">
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" href="#" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+			        <a class="nav-link" (click)="homeEventHandler()">Home</a>
 			      </li>
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" href="#">About Us</a>
+			        <a class="nav-link" routerLink="/aboutus">About Us</a>
 			      </li>
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" href="#">Contact Us</a>
+			        <a class="nav-link" routerLink="/contactus">Contact Us</a>
 			      </li>
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" href="#" routerLink="/login">Login</a>
+			        <a class="nav-link" routerLink="/login">Login</a>
 			      </li>
 
-			      <li class="nav-item ml-2 active">
-			        <a class="nav-link" href="#" routerLink="/register">Register</a>
+			      <li class="nav-item active ml-2">
+			        <a class="nav-link" routerLink="/register">Register</a>
 			      </li>
 			      
 
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" href="#">Checkout Cart</a>
+			        <a class="nav-link" (click)="checkoutEventHandler()">Checkout Cart</a>
+			      </li>
+
+			      <li class="nav-item ml-2">
+			        <a class="nav-link" (click)="orderEventHandler()">Orders</a>
 			      </li>
 			    </ul>
 			  </div>

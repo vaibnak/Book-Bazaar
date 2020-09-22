@@ -14,10 +14,15 @@ export class CheckoutComponent implements OnInit {
   userBook;
   total:number;
   displayLoading;
+  notLogged:boolean;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService,public router:Router) {
   	this.userName = this.route.snapshot.paramMap.get('userName');
   	console.log("username: ",this.userName);
     this.total = 0;
+    this.notLogged = false;
+    if(this.userName == "undefined"){
+      this.notLogged = true;
+    }
    }
 
   ngOnInit(): void {

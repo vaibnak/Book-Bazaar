@@ -47,7 +47,10 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-4 mt-5">
+		<div *ngIf = "notLogged"class="col-12 mt-5" >
+			<h1 class="text-center">Log in to view your cart</h1>
+		</div>
+		<div *ngIf = "!notLogged" class="col-4 mt-5">
 			<div class="card" style="max-width: 18rem">
 				<div class="card-header">TOTAL</div>
 			  <div class="card-body">
@@ -59,7 +62,7 @@
 			  </div>
 			</div>
 		</div>
-		<div class="col-8">
+		<div *ngIf = "!notLogged" class="col-8">
 			<h1 class="text-center col-12 mt-5">Books in your Cart</h1>
 			<div *ngFor="let tmp of userBook;let i=index" class="card-deck mt-2">
 	    		<div class="row">

@@ -49,4 +49,17 @@ export class RegisterComponent implements OnInit {
  	})
   }
 
+  homeEventHandler(){
+    this.router.navigate(["/home","undefined"]);
+  }
+
+  checkoutEventHandler(){
+     this.router.navigate(["/checkout","undefined"]); 
+  }
+
+  orderEventHandler(){
+    this.router.navigate(["/order","undefined"]);
+  }
+
+
 }
