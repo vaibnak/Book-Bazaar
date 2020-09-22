@@ -1,14 +1,13 @@
-.nv_bar{
-    width: 100%;
-}
-
-.txt{
-	margin-top: 100px;
-	font-size: 25px;
-}
-
 .bd{
 	margin:0;
 	min-height: 100%;
 	background-image: url("../../assets/bookbg.jpg");
+}
+
+.nv_bar{
+    width: 100%;
+}
+
+.cnt{
+	font-size: 30px;
 }

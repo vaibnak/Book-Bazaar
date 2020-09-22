@@ -14,6 +14,7 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
 import { GetFiltersService } from './get-filters.service';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     HomeComponent,
     UploadImageComponent,
     CheckoutComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

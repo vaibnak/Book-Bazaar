@@ -13,68 +13,89 @@ export class CheckoutComponent implements OnInit {
   userName:string;
   userBook;
   total:number;
+  displayLoading;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService,public router:Router) {
   	this.userName = this.route.snapshot.paramMap.get('userName');
-  	console.log(this.userName);
+  	console.log("username: ",this.userName);
     this.total = 0;
    }
 
   ngOnInit(): void {
-  	console.log("in ngOnInit");
+ 
   	let tmpArray = [];
+    let arr1 = [];
+    let arr2 = [];
 
+    // we have the username so getting the books that the user has selected
   	this.manageUsersService.getUserBook({user: this.userName})
- 	.subscribe((data)=>{
- 		console.log("books by the user:",data);
- 		this.displayLoading = false;
- 		for(let b of data){
- 			// console.log("each book data",b);
- 			this.manageUsersService.getBookFromBooks({title: b.book})
-		 	.subscribe((data)=>{
-		 		console.log(data);
-		 		for(let tmp of data){
-          tmp.quantity = b.quantity;
-          console.log("modified tmp: ",tmp); 
-		 			tmpArray.push(tmp)
-          this.total += Number(tmp.price*tmp.quantity)  
-		 		}
-		 	},(err)=>{
-		 		console.log(err);
-		 	})
- 		}
- 		this.userBook = tmpArray;
- 		console.log("userBook: ",this.userBook);
- 	},(err)=>{
- 		console.log(err);
- 	})
+ 	  .subscribe((data)=>{
+   		this.displayLoading = false;
+      // Object.entries takes the object and converts it into arrays, had to do this because
+      // was getting error on iterating over the data 
+   		arr1 = Object.entries(data);
+      arr1 = arr1.map((item=>item[1]));
+
+      for(let b of arr1){
+        // we now have the book title so getting all info of the book
+   			this.manageUsersService.getBookFromBooks({title: b.book})
+  		 	.subscribe((data)=>{
+          // can not iterate over data hence converting it to array 
+  		 		arr2 = Object.entries(data);
+          arr2 = arr2.map((item)=>item[1]);
+
+  		 		for(let tmp of arr2){
+            // adding quantity field to the book 
+            tmp.quantity = b.quantity; 
+  		 			tmpArray.push(tmp)
+            this.total += Number(tmp.price*tmp.quantity)  
+  		 		}
+  		 	},(err)=>{
+  		 		console.log(err);
+  		 	})
+   		}
+   		this.userBook = tmpArray;
+ 	  },(err)=>{
+ 		  console.log(err);
+ 	  })
+     
   }
 
   getUserBook(){
-    let tmpArray = [];
-    this.total = 0;
-    this.manageUsersService.getUserBook({user: this.userName})
-     .subscribe((data)=>{
-       console.log("books by the user:",data);
-       // this.displayLoading = false;
-       for(let b of data){
-         console.log("each book data",b);
-         this.manageUsersService.getBookFromBooks({title: b.book})
-         .subscribe((data)=>{
-           console.log(data);
-           for(let tmp of data){
-             tmp.quantity = b.quantity;
-             tmpArray.push(tmp)
-            this.total += Number(tmp.price*tmp.quantity)  
-           }
-         },(err)=>{
-           console.log(err);
-         })
-       }
-       this.userBook = tmpArray;
-       console.log("userBook: ",this.userBook);
-     },(err)=>{
-       console.log(err);
-     })
+      let tmpArray = [];
+      let arr1 = [];
+      let arr2 = [];
+
+      // we have the username so getting the books that the user has selected
+      this.manageUsersService.getUserBook({user: this.userName})
+       .subscribe((data)=>{
+         this.displayLoading = false;
+        // Object.entries takes the object and converts it into arrays, had to do this because
+        // was getting error on iterating over the data 
+         arr1 = Object.entries(data);
+        arr1 = arr1.map((item=>item[1]));
+
+        for(let b of arr1){
+          // we now have the book title so getting all info of the book
+           this.manageUsersService.getBookFromBooks({title: b.book})
+           .subscribe((data)=>{
+            // can not iterate over data hence converting it to array 
+             arr2 = Object.entries(data);
+            arr2 = arr2.map((item)=>item[1]);
+
+             for(let tmp of arr2){
+              // adding quantity field to the book 
+              tmp.quantity = b.quantity; 
+               tmpArray.push(tmp)
+              this.total += Number(tmp.price*tmp.quantity)  
+             }
+           },(err)=>{
+             console.log(err);
+           })
+         }
+         this.userBook = tmpArray;
+       },(err)=>{
+         console.log(err);
+       })
   }
 
   removeItemEventHandler(title){

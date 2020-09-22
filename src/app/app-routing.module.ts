@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent} from './register/register.component';
 import {UploadImageComponent} from './upload-image/upload-image.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {AboutUsComponent} from './about-us/about-us.component';
+import {ContactUsComponent} from './contact-us/contact-us.component';
 
 
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
 	{path:'home/:userName',component:HomeComponent},
 	{path:'upload-image',component:UploadImageComponent},
 	{path:'checkout/:userName', component:CheckoutComponent},
+	{path:'aboutus',component:AboutUsComponent},
+	{path:'contactus',component:ContactUsComponent},
 	{path:"",redirectTo: "/login",pathMatch:"full"},
 	{path:"**",component:LoginComponent}
 
