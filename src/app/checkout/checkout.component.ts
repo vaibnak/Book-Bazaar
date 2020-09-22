@@ -122,6 +122,21 @@ export class CheckoutComponent implements OnInit {
      })    
   }
 
+  orderEventHandler(){
+    let tmp = [];
+    tmp = this.userBook.map((item)=>{
+      return {book: item.title,quantity: item.quantity,user:this.userName};
+    })
+
+    this.manageUsersService.orderBook(tmp)
+     .subscribe((data)=>{
+       console.log(data);
+     },(err)=>{
+       console.log(err);
+     })
+  }
+
+
 
 }
 

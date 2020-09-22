@@ -48,7 +48,7 @@
 			    <p class="card-text">your order : {{this.total | currency: 'INR':true}}</p>
 			    <p class="card-text">GST : {{(this.total*18)/100 | currency: 'INR':true}} (18%) </p>
 			    <p class="card-text">Total : {{this.total + (this.total*18)/100 | currency: 'INR':true}}</p>
-			    <a class="btn btn-primary">Place order</a>
+			    <a class="btn btn-primary" (click)="orderEventHandler()">Place order</a>
 
 			  </div>
 			</div>
@@ -81,35 +81,6 @@
 		
 			
 		</div>
-		<!-- <div class="card" col-2>
-		  <div class="card-body">
-		    <h5 class="card-title">Special title treatment</h5>
-		    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
-		  </div>
-		</div>
-		<div *ngFor="let tmp of userBook;let i=index" class="card-deck mt-2">
-	    		<div class="row">
-    				<div class="card col-4 text-center border border-primary bg-warning p-2">
-					    <img class="card-img-top" [src]="tmp.image" alt="Card image cap" style="max-height: 300px; min-height: 300px;">
-					    <div class="card-body">
-					      <h5 class="card-title" (name)="tmp.title">{{tmp.title}}</h5>
-					       <h6 class="card-subtitle mb-2 text-muted">{{tmp.price | currency: 'INR':true}}</h6>
-
-					      <p class="card-text" style="height: 150px; overflow: hidden;">{{tmp.description}}</p>
-
-					      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
-					      <div class="d-flex justify-content-between mt-2">
-					      	<a href="" class="btn btn-primary">View</a>
-
-						    <a class="btn btn-primary text-right">Add to cart</a>	
-						      </div> 
-					      
-					    </div>
-			    	</div>
-			    </div>
-					  	
-	    </div> -->
-
+		
 	</div>
 </div>
