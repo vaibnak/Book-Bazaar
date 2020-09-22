@@ -24,7 +24,7 @@ function removeUserBook(req, res)
                 {
                     var userBook = req.body;
                     console.log(userBook);
-                    coll.remove({user:userBook.userName,book:userBook.book}, (err, result)=>{
+                    coll.remove({user:userBook.userName,book:{$in:userBook.book}}, (err, result)=>{
                             if(err)
                             {
                                 res.status(500);

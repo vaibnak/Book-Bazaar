@@ -65,6 +65,7 @@ export class CheckoutComponent implements OnInit {
       let arr1 = [];
       let arr2 = [];
 
+      this.total = 0;
       // we have the username so getting the books that the user has selected
       this.manageUsersService.getUserBook({user: this.userName})
        .subscribe((data)=>{
@@ -99,7 +100,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   removeItemEventHandler(title){
-    this.manageUsersService.removeUserBook({userName:this.userName,book:title})
+    this.manageUsersService.removeUserBook({userName:this.userName,book:[title]})
      .subscribe((data)=>{
        console.log(data);
        this.getUserBook();
@@ -134,6 +135,17 @@ export class CheckoutComponent implements OnInit {
      },(err)=>{
        console.log(err);
      })
+
+     let tmpBook = [];
+     tmpBook = tmp.map((item)=>item.book);
+     this.manageUsersService.removeUserBook({userName:this.userName,book:tmpBook})
+     .subscribe((data)=>{
+       console.log(data);
+       this.getUserBook();
+     },(err)=>{
+       console.log(err);
+     })
+     
   }
 
 
