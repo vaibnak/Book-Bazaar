@@ -1,1 +1,78 @@
-<p>order works!</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="nv_bar">
+	    	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <a class="navbar-brand" href="#">BB</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			   	<form class="form-inline my-2 my-lg-0" >
+			      <input class="form-control mr-sm-2" type="search"  placeholder="Search" aria-label="Search">
+			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			    </form>
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item ml-2">
+			        <a class="nav-link" (click)="homeEventHandler()">Home</a>
+			      </li>
+			      <li class="nav-item ml-2">
+			        <a class="nav-link" href="#">About Us</a>
+			      </li>
+			      <li class="nav-item ml-2">
+			        <a class="nav-link" href="#">Contact Us</a>
+			      </li>
+			      <li class="nav-item ml-2">
+			        <a class="nav-link" href="#" routerLink="/login">Login</a>
+			      </li>
+
+			      <li class="nav-item ml-2">
+			        <a class="nav-link" href="#" routerLink="/register">Register</a>
+			      </li>
+			      
+
+			      <li class="nav-item ml-2">
+			        <a class="nav-link">Checkout Cart</a>
+			      </li>
+
+			      <li class="nav-item ml-2">
+			        <a class="nav-link acitve">Orders</a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-8 offset-2">
+		<!-- 	<h1 class="text-center col-12 mt-5">Books in your Cart</h1>
+			<div *ngFor="let tmp of userBook;let i=index" class="card-deck mt-2">
+	    		<div class="row">
+    				<div class="card col-4 text-center border border-primary bg-warning p-2">
+					    <img class="card-img-top" [src]="tmp.image" alt="Card image cap" style="max-height: 300px; min-height: 300px;">
+					    <div class="card-body">
+					      <h5 class="card-title" (name)="tmp.title">{{tmp.title}}</h5>
+					       <h6 class="card-subtitle mb-2 text-muted">{{tmp.price | currency: 'INR':true}}</h6>
+
+					      <p class="card-text" style="height: 150px; overflow: hidden;">{{tmp.description}}</p>
+
+					      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
+					      <div class="d-flex justify-content-between mt-2">
+					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity+1)">+</a>
+					      	quantity : {{tmp.quantity}}
+					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity-1)">-</a>
+
+						    <a class="btn btn-danger text-right" (click)="removeItemEventHandler(tmp.title)">Remove from cart</a>	
+						      </div> 
+					      
+					    </div>
+			    	</div>
+			    </div>
+			</div>
+		 -->
+			
+		</div>
+		
+	</div>
+</div>

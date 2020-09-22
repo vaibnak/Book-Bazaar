@@ -7,7 +7,7 @@ import {UploadImageComponent} from './upload-image/upload-image.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
-
+import {OrderComponent} from './order/order.component';
 
 const routes: Routes = [
 
@@ -18,6 +18,7 @@ const routes: Routes = [
 	{path:'checkout/:userName', component:CheckoutComponent},
 	{path:'aboutus',component:AboutUsComponent},
 	{path:'contactus',component:ContactUsComponent},
+	{path:'order/:userName',component:OrderComponent},
 	{path:"",redirectTo: "/login",pathMatch:"full"},
 	{path:"**",component:LoginComponent}
 

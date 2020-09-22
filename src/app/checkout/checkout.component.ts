@@ -123,7 +123,7 @@ export class CheckoutComponent implements OnInit {
      })    
   }
 
-  orderEventHandler(){
+  getorderEventHandler(){
     let tmp = [];
     tmp = this.userBook.map((item)=>{
       return {book: item.title,quantity: item.quantity,user:this.userName};
@@ -146,6 +146,10 @@ export class CheckoutComponent implements OnInit {
        console.log(err);
      })
      
+  }
+
+  orderEventHandler(){
+    this.router.navigate(["/order",this.userName]);
   }
 
 
