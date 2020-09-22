@@ -20,6 +20,7 @@ var getBookFromBooksRoute = require('./routes/getBookFromBooksRoute');
 var removeUserBookRoute = require('./routes/removeUserBookRoute');
 var updateQuantityRoute = require('./routes/updateQuantityRoute');
 var orderBookRoute = require('./routes/orderBookRoute');
+var getOrderRoute = require('./routes/getOrderRoute');
 
 
 app.use(bodyParser.json({limit: '50mb'}));
@@ -67,7 +68,8 @@ app.use('/api/updateQuantity',updateQuantityRoute);
 // endpoint to store order
 app.use('/api/orderBook',orderBookRoute);
 
-// endpoint to remove book for userBook
+// endpoint to get all the orders
+app.use('/api/getOrder',getOrderRoute);
 
 
 
