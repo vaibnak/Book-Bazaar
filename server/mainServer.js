@@ -19,6 +19,8 @@ var getUserBookRoute = require('./routes/getUserBookRoute');
 var getBookFromBooksRoute = require('./routes/getBookFromBooksRoute');
 var removeUserBookRoute = require('./routes/removeUserBookRoute');
 var updateQuantityRoute = require('./routes/updateQuantityRoute');
+var orderBookRoute = require('./routes/orderBookRoute');
+
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -61,6 +63,9 @@ app.use('/api/removeUserBook',removeUserBookRoute);
 
 // endpoint to updateQuantity
 app.use('/api/updateQuantity',updateQuantityRoute);
+
+// endpoint to store order
+app.use('/api/orderBook',orderBookRoute);
 
 
 
