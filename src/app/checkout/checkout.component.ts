@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
  	  },(err)=>{
  		  console.log(err);
  	  })
-     
+
   }
 
   getUserBook(){
@@ -103,7 +103,6 @@ export class CheckoutComponent implements OnInit {
      .subscribe((data)=>{
        console.log(data);
        this.getUserBook();
-       // this.displayLoading = false;
      },(err)=>{
        console.log(err);
      })
@@ -115,13 +114,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   changeQuantityEventHandler(title,quantity){
-    console.log("title: ",title);
-    console.log("quantity: ",quantity);
     this.manageUsersService.updateQuantity({userName:this.userName,book:title,quantity:quantity})
      .subscribe((data)=>{
-       console.log(data);
        this.getUserBook();
-       // this.displayLoading = false;
      },(err)=>{
        console.log(err);
      })    
