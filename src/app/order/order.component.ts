@@ -60,4 +60,20 @@ export class OrderComponent implements OnInit {
  	  })
   }
 
+  aboutusEventHandler(){
+	 this.router.navigate(["/aboutus",this.userName]);
+  }
+
+   contactusEventHandler(){
+	  this.router.navigate(["/contactus",this.userName]);
+	}
+
+	checkoutEventHandler(){
+		this.router.navigate(["/checkout",this.userName])	
+	}
+
+	homeEventHandler(){
+		this.router.navigate(["/home",this.userName]);	
+	}
+
 }

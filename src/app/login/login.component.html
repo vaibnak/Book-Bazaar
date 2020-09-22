@@ -19,26 +19,29 @@
 			        <a class="nav-link" (click)="homeEventHandler()">Home</a>
 			      </li>
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" routerLink="/aboutus">About Us</a>
+			        <a class="nav-link" (click)="aboutusEventHandler()">About Us</a>
 			      </li>
 			      <li class="nav-item ml-2">
-			        <a class="nav-link" routerLink="/contactus">Contact Us</a>
+			        <a class="nav-link" (click)="contactusEventHandler()">Contact Us</a>
 			      </li>
-			      <li class="nav-item active ml-2">
-			        <a class="nav-link" routerLink="/login">Login</a>
-			      </li>
-
-			      <li class="nav-item ml-2">
-			        <a class="nav-link" routerLink="/register">Register</a>
-			      </li>
-			      
-
+			 
+			   
 			      <li class="nav-item ml-2">
 			        <a class="nav-link" (click)="checkoutEventHandler()">Checkout Cart</a>
 			      </li>
 
 			      <li class="nav-item ml-2">
 			        <a class="nav-link" (click)="orderEventHandler()">Orders</a>
+			      </li>
+
+			    </ul>
+			    <ul class="navbar-nav">
+			       <li class="nav-item active ml-2">
+			        <a class="nav-link" routerLink="/login">Login</a>
+			      </li>
+
+			      <li class="nav-item ml-2">
+			        <a class="nav-link" routerLink="/register">Register</a>
 			      </li>
 			    </ul>
 			  </div>

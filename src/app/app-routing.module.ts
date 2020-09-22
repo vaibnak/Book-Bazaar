@@ -16,8 +16,8 @@ const routes: Routes = [
 	{path:'home/:userName',component:HomeComponent},
 	{path:'upload-image',component:UploadImageComponent},
 	{path:'checkout/:userName', component:CheckoutComponent},
-	{path:'aboutus',component:AboutUsComponent},
-	{path:'contactus',component:ContactUsComponent},
+	{path:'aboutus/:userName',component:AboutUsComponent},
+	{path:'contactus/:userName',component:ContactUsComponent},
 	{path:'order/:userName',component:OrderComponent},
 	{path:"",redirectTo: "/login",pathMatch:"full"},
 	{path:"**",component:LoginComponent}

@@ -157,6 +157,14 @@ export class CheckoutComponent implements OnInit {
     this.router.navigate(["/order",this.userName]);
   }
 
+  aboutusEventHandler(){
+    this.router.navigate(["/aboutus",this.userName]);
+  }
+
+  contactusEventHandler(){
+    this.router.navigate(["/contactus",this.userName]);
+  }
+
 
 
 }

@@ -61,5 +61,13 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(["/order","undefined"]);
   }
 
+  aboutusEventHandler(){
+    this.router.navigate(["/aboutus","undefined"]);
+  }
+
+  contactusEventHandler(){
+    this.router.navigate(["/contactus","undefined"]);
+  }
+
 
 }

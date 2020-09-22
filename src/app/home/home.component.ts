@@ -24,10 +24,16 @@ export class HomeComponent implements OnInit {
   currentYear;
   userName:string;
   userBook;
+  logged;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService,public router:Router) {
   		this.displayLoading = true;
   		this.noResult = false;
   		this.userName = this.route.snapshot.paramMap.get('userName');
+  		if(this.userName == "undefined"){
+  			this.logged = false;
+  		}else{
+  			this.logged = true;
+  		}
    }
 
   ngOnInit(): void {
@@ -158,17 +164,23 @@ export class HomeComponent implements OnInit {
 	}
 
 	addEventHandler(e,book){
-		e.target.childNodes[0].textContent = "Added";
-		e.target.className = "btn btn-success dis";
-		// e.disabled = true;
 
-		this.manageUsersService.storeUserBook({userName:this.userName,book:book,quantity:1})
- 		.subscribe((data)=>{
- 			console.log(data);
- 			// this.displayLoading = false;
- 		},(err)=>{
- 			console.log(err);
- 		})
+		if(!this.logged){
+			alert("Log in to access your cart");
+		}else{
+			e.target.childNodes[0].textContent = "Added";
+			e.target.className = "btn btn-success dis";
+			// e.disabled = true;
+
+			this.manageUsersService.storeUserBook({userName:this.userName,book:book,quantity:1})
+	 		.subscribe((data)=>{
+	 			console.log(data);
+	 			// this.displayLoading = false;
+	 		},(err)=>{
+	 			console.log(err);
+	 		})	
+		}
+		
 	}
 
 	checkoutEventHandler(){
@@ -196,6 +208,19 @@ export class HomeComponent implements OnInit {
 		 		console.log(err);
 		 	})
 	}
+
+	orderEventHandler(){
+    	this.router.navigate(["/order",this.userName]);
+  	}
+
+	aboutusEventHandler(){
+	    this.router.navigate(["/aboutus",this.userName]);
+	}
+
+	contactusEventHandler(){
+	    this.router.navigate(["/contactus",this.userName]);
+	}
+
 
 
 }
