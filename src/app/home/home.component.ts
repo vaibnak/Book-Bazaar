@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   userBook;
   logged;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService,public router:Router) {
+  		console.log("constructor called");
   		this.displayLoading = true;
   		this.noResult = false;
   		this.userName = this.route.snapshot.paramMap.get('userName');
@@ -37,6 +38,8 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+  	console.log("ng on init called")
 
   	this.manageUsersService.getUserBook({user: this.userName})
   	.subscribe((data)=>{
@@ -220,6 +223,7 @@ export class HomeComponent implements OnInit {
 	contactusEventHandler(){
 	    this.router.navigate(["/contactus",this.userName]);
 	}
+
 
 
 

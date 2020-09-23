@@ -76,4 +76,5 @@ export class OrderComponent implements OnInit {
 		this.router.navigate(["/home",this.userName]);	
 	}
 
+
 }
