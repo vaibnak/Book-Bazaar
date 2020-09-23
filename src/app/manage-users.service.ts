@@ -67,5 +67,10 @@ export class ManageUsersService {
     return this.httpClient.post(myServerUrl,obj);
    }
 
+   getUser(obj){
+     let myServerUrl = this.myBaseServerUrl+"api/getUser";
+      return this.httpClient.post(myServerUrl,obj);
+   }
+
 
 }

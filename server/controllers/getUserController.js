@@ -15,7 +15,7 @@ function getUser(req,res){
 					res.json({message:"Error connecting the mongodb server"});
 				}else{
 					var user = req.body;
-					coll.find({userName:user.userName},(err,data)=>{
+					coll.find({userName:user.userName}).toArray((err,data)=>{
 						if(err){
 							res.status(500);
 							res.json({message:"Error connectin to mongodb"});

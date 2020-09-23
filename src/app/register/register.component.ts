@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 	},this.pwdMatchValidator)
 
 	user:User;
-
+  userNameUnique:boolean;
 
 
   constructor(private manageUsersService:ManageUsersService,public router:Router) { 
@@ -30,10 +30,42 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userNameUnique = true;
   }
 
   pwdMatchValidator(frm:FormGroup){
     return frm.get('password').value === frm.get('cnfrmPassword').value?null:{'mismatch':true};
+  }
+
+  checkUserName(userName){
+    this.manageUsersService.getUser({userName:userName})
+   .subscribe((data)=>{
+     console.log(data);
+     let arr1 = Object.entries(data);
+     console.log("arr1: ",arr1);
+     if(arr1.length > 0){
+       this.userNameUnique = false;
+     }else{
+        this.registerUser();
+     }
+     
+   },(err)=>{
+     console.log(err);
+     
+   })
+
+
+
+  }
+
+  registerUser(){
+    this.manageUsersService.registerUser(this.user)
+     .subscribe((data)=>{
+       console.log(data);
+       this.router.navigate(["/home",this.registerForm.get('userName').value]);
+     },(err)=>{
+       console.log(err);
+     })
   }
 
   onSubmit(){
@@ -42,15 +74,9 @@ export class RegisterComponent implements OnInit {
   	console.log(this.registerForm.get('userName').value)
   	this.user = new User(this.registerForm.get('name').value,this.registerForm.get('userName').value,
   		this.registerForm.get('phoneNo').value,this.registerForm.get('password').value,this.registerForm.get('address').value);
- 
- 	console.log(this.user);
- 	this.manageUsersService.registerUser(this.user)
- 	.subscribe((data)=>{
- 		console.log(data);
-     this.router.navigate(["/home",this.registerForm.get('userName').value]);
- 	},(err)=>{
- 		console.log(err);
- 	})
+    
+   this.checkUserName(this.registerForm.get('userName').value);
+ 	  
   }
 
   homeEventHandler(){
@@ -71,6 +97,11 @@ export class RegisterComponent implements OnInit {
 
   contactusEventHandler(){
     this.router.navigate(["/contactus","undefined"]);
+  }
+
+  userNameEventHandler(){
+    console.log("userNameEventHandler called");
+    this.userNameUnique = true;
   }
 
 
