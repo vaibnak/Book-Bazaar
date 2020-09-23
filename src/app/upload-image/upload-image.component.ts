@@ -13,6 +13,7 @@ export class UploadImageComponent implements OnInit {
    imageError: string;
    isImageSaved: boolean;
    cardImageBase64: string;
+   logged:boolean
 
    entryForm = new FormGroup({
    		title: new FormControl(''),
@@ -29,6 +30,7 @@ export class UploadImageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.logged = false;
   }
 
   onSubmit(){
@@ -73,16 +75,20 @@ export class UploadImageComponent implements OnInit {
         this.isImageSaved = false;
     }
 
-  // orderEventHandler(){
-  //   this.router.navigate(["/order",this.userName]);
-  // }
+  orderEventHandler(){
+    // this.router.navigate(["/order",this.userName]);
+  }
 
-  // aboutusEventHandler(){
-  //     this.router.navigate(["/aboutus",this.userName]);
-  // }
+  aboutusEventHandler(){
+      // this.router.navigate(["/aboutus",this.userName]);
+  }
 
-  // contactusEventHandler(){
-  //     this.router.navigate(["/contactus",this.userName]);
-  // }
+  contactusEventHandler(){
+      // this.router.navigate(["/contactus",this.userName]);
+  }
+
+  checkoutEventHandler(){
+
+  }
 
 }

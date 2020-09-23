@@ -1,14 +1,17 @@
 var mongoClient = require("mongodb").MongoClient;
-var mongodbUrl = "mongodb://localhost:27017/";
+const {Connection} = require("./dbConfig");
+
+const dbUrl = Connection.dbUrl;
+const dbName = Connection.dbName;
 
 function filterByGenere(req,res){
 
-	mongoClient.connect(mongodbUrl,{useUnifiedTopology:true},(err,dbHost)=>{
+	mongoClient.connect(dbUrl,{useUnifiedTopology:true},(err,dbHost)=>{
 		if(err){
 			res.status(500);
 			res.json({message:"Error connecting the mongodb server"});
 		}else{
-			var db = dbHost.db("BookBazaar");
+			var db = dbHost.db(dbName);
 			db.collection("filterByGenere",(err,coll)=>{
 				if(err){
 					res.status(500);

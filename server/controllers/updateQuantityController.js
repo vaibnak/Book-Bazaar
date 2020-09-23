@@ -1,10 +1,11 @@
 var mongoClient=require("mongodb").MongoClient;
+const {Connection} = require("./dbConfig");
 
-var mongodbUrl = "mongodb://localhost:27017/";
-
+const dbUrl = Connection.dbUrl;
+const dbName = Connection.dbName;
 function updateQuantity(req, res)
 {
-    mongoClient.connect(mongodbUrl,{ useUnifiedTopology: true }, (err, dbHost)=>{
+    mongoClient.connect(dbUrl,{ useUnifiedTopology: true }, (err, dbHost)=>{
         console.log('updateQuantity called')
         if(err)
         {
@@ -13,7 +14,7 @@ function updateQuantity(req, res)
         }
         else
         {
-            var db=dbHost.db("BookBazaar");
+            var db=dbHost.db(dbName);
             db.collection("userBook", (err, coll)=>{
                 if(err)
                 {

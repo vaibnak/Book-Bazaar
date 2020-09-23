@@ -1,14 +1,19 @@
 var mongoClient = require("mongodb").MongoClient;
-var mongodbUrl = "mongodb://localhost:27017/";
+const {Connection} = require("./dbConfig");
 
+const dbUrl = Connection.dbUrl;
+const dbName = Connection.dbName;
 function getUser(req,res){
+	console.log("get user");
 
-	mongoClient.connect(mongodbUrl,{useUnifiedTopology:true},(err,dbHost)=>{
+	mongoClient.connect(dbUrl,{useUnifiedTopology:true},(err,dbHost)=>{
 		if(err){
+			console.log("err: ",err);
 			res.status(500);
 			res.json({message:"Error connecting the mongodb server"});
 		}else{
-			var db = dbHost.db("BookBazaar");
+			console.log("connection succesfull");
+			var db = dbHost.db(dbName);
 			db.collection("users",(err,coll)=>{
 				if(err){
 					res.status(500);

@@ -1,10 +1,11 @@
 var mongoClient=require("mongodb").MongoClient;
+const {Connection} = require("./dbConfig");
 
-var mongodbUrl = "mongodb://localhost:27017/";
-
+const dbUrl = Connection.dbUrl;
+const dbName = Connection.dbName;
 function orderBook(req, res)
 {
-    mongoClient.connect(mongodbUrl,{ useUnifiedTopology: true }, (err, dbHost)=>{
+    mongoClient.connect(dbUrl,{ useUnifiedTopology: true }, (err, dbHost)=>{
         console.log('orderBook called')
         if(err)
         {
@@ -13,7 +14,7 @@ function orderBook(req, res)
         }
         else
         {
-            var db=dbHost.db("BookBazaar");
+            var db=dbHost.db(dbName);
             db.collection("orders", (err, coll)=>{
                 if(err)
                 {
