@@ -12,13 +12,15 @@ import {Router} from "@angular/router"
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-		userName: new FormControl(''),
-		password: new FormControl(''),
-	})
+		userName: new FormControl('',[Validators.required]),
+		password: new FormControl('',[Validators.required]),
+	});
+  wrongInfo:boolean;
   
   constructor(private manageUsersService:ManageUsersService,public router:Router) { }
 
   ngOnInit(): void {
+    this.wrongInfo = false;
   }
 
   onSubmit(){
@@ -33,7 +35,10 @@ export class LoginComponent implements OnInit {
  		var tempObj:any=data["message"];
       	if(tempObj == true){
         	this.router.navigate(["/home",this.loginForm.get('userName').value]);
-      	}
+      	  this.wrongInfo = false;
+        }else{
+          this.wrongInfo = true;
+        }
  	},(err)=>{
  		console.log(err);
  	})
@@ -58,5 +63,6 @@ export class LoginComponent implements OnInit {
   contactusEventHandler(){
     this.router.navigate(["/contactus","undefined"]);
   }
+
 
 }

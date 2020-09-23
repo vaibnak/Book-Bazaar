@@ -69,7 +69,13 @@
 			  <div class="form-group">
 			    <label for="phone" class="text-light">Phone no.</label>
 			    <input type="number" class="form-control" id="phone" placeholder="Phone number" formControlName="phoneNo">
+			    <small class="text-danger">
+			  	{{registerForm.get('phoneNo').status}}
+			  </small>
 			  </div>
+			  <small class="text-danger">
+			  	{{registerForm.get('phoneNo').status}}
+			  </small>
 			  <div class="form-group">
 			    <label for="password" class="text-light">Password</label>
 			    <input type="password" class="form-control" id="username" placeholder="password" formControlName="password">
