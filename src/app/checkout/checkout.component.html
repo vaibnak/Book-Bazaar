@@ -38,7 +38,7 @@
 			      </li>
 
 			      <li class="nav-item">
-			      	<button class="btn btn-outline-primary">
+			      	<button class="btn btn-outline-primary" routerLink="/register">
 			    		Register
 			    	</button>
 			      </li>
@@ -61,9 +61,9 @@
 		<div *ngIf = "notLogged"class="col-12 mt-5" >
 			<h1 class="text-center">Log in to view your cart</h1>
 		</div>
-		<div *ngIf = "!notLogged" class="col-4 mt-5">
-			<div class="card" style="max-width: 18rem">
-				<div class="card-header">TOTAL</div>
+		<div *ngIf = "!notLogged" class="col-4 ttlCrd">
+			<div class="card shadow" style="max-width: 18rem">
+				<div class="card-header text-light ch">TOTAL</div>
 			  <div class="card-body">
 			    <p class="card-text">your order : {{this.total | currency: 'INR':true}}</p>
 			    <p class="card-text">GST : {{(this.total*18)/100 | currency: 'INR':true}} (18%) </p>
@@ -76,7 +76,7 @@
 		<div *ngIf = "!notLogged" class="col-8">
 			<h1 class=" text-center mt-5">Books in your Cart</h1>
 			<div *ngFor="let tmp of userBook;let i=index" class="card-deck mt-2">
-					<div class="card p-2" style="max-width: 30rem">
+					<div class="card p-2 border-5 border-primary shadow" style="max-width: 30rem">
 					    <img class="card-img-top" [src]="tmp.image" alt="Card image cap" style="max-height: 300px; min-height: 300px;">
 					    <div class="card-body">
 					      <h5 class="card-title" (name)="tmp.title">{{tmp.title}}</h5>
@@ -98,30 +98,6 @@
 				
 				
 			</div>
-			<!-- <div *ngFor="let tmp of userBook;let i=index" class="card-deck mt-2">
-	    		<div class="row">
-    				<div class="card col-4 text-center border border-primary bg-warning p-2">
-					    <img class="card-img-top" [src]="tmp.image" alt="Card image cap" style="max-height: 300px; min-height: 300px;">
-					    <div class="card-body">
-					      <h5 class="card-title" (name)="tmp.title">{{tmp.title}}</h5>
-					       <h6 class="card-subtitle mb-2 text-muted">{{tmp.price | currency: 'INR':true}}</h6>
-
-					      <p class="card-text" style="height: 150px; overflow: hidden;">{{tmp.description}}</p>
-
-					      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
-					      <div class="d-flex justify-content-between mt-2">
-					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity+1)">+</a>
-					      	quantity : {{tmp.quantity}}
-					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity-1)">-</a>
-
-						    <a class="btn btn-danger text-right" (click)="removeItemEventHandler(tmp.title)">Remove from cart</a>	
-						      </div> 
-					      
-					    </div>
-			    	</div>
-			    </div>
-			</div> -->
-		
 			
 		</div>
 		

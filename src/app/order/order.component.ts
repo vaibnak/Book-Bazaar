@@ -12,11 +12,13 @@ export class OrderComponent implements OnInit {
   userName:string;
   displayLoading:boolean;
   orderedBook;
-  notLogged:boolean;	
+  notLogged:boolean;
+  totalOrders: number;	
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService,public router:Router) { 
   	this.userName = this.route.snapshot.paramMap.get('userName');
   	this.displayLoading = true;
   	this.notLogged = false;
+  	this.totalOrders = 0;
   	if(this.userName == "undefined"){
   		this.notLogged = true;
   	}
@@ -48,6 +50,7 @@ export class OrderComponent implements OnInit {
             // adding quantity field to the book 
             tmp.quantity = b.quantity; 
   		 			tmpArray.push(tmp)
+  		 			this.totalOrders += tmp.quantity;
               
   		 		}
   		 	},(err)=>{

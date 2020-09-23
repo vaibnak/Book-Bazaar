@@ -43,7 +43,7 @@
 			      </li>
 
 			      <li class="nav-item">
-			      	<button class="btn btn-outline-primary">
+			      	<button class="btn btn-outline-primary" routerLink="/register">
 			    		Register
 			    	</button>
 			      </li>
@@ -59,18 +59,14 @@
     		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 			  <div class="form-group">
 			    <label for="exampleInputEmail1" class="text-light">Username</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="userName">
+			    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" formControlName="userName">
 			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1" class="text-light">Password</label>
 			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName = "password">
 			  </div>
-			  <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-			    <label class="form-check-label text-light" for="exampleCheck1">Check me out</label>
-			  </div>
-			  <button type="submit" class="btn btn-warning btn-block">Submit</button>
+			  <button type="submit" class="btn btn-warning btn-block mt-4">Submit</button>
 			</form>
     	</div>
     </div>
