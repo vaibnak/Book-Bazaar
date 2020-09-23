@@ -139,7 +139,7 @@
     				<div class="card p-2">
 					    <img class="card-img-top" [src]="selectedBookImage" alt="Card image cap" style="max-height: 300px; min-height: 300px;">
 					    <div class="card-body">
-					      <h5 class="card-title" (name)="tmp.title" #bookTitle>{{selectedBookTitle}}</h5>
+					      <h5 class="card-title" (name)="selectedBookTitle">{{selectedBookTitle}}</h5>
 					       <h6 class="card-subtitle mb-2 text-muted">{{selectedBookPrice | currency: 'INR':true}}</h6>
 
 					      <p class="card-text" style="height: 150px; overflow: hidden;">{{selectedBookContent}}</p>
