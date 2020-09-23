@@ -14,7 +14,7 @@ const routes: Routes = [
 	{path:'login',component: LoginComponent},
 	{path:'register',component:RegisterComponent},
 	{path:'home/:userName',component:HomeComponent},
-	{path:'upload-image',component:UploadImageComponent},
+	{path:'admin/:userName',component:UploadImageComponent},
 	{path:'checkout/:userName', component:CheckoutComponent},
 	{path:'aboutus/:userName',component:AboutUsComponent},
 	{path:'contactus/:userName',component:ContactUsComponent},

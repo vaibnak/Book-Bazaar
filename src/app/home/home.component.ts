@@ -177,7 +177,7 @@ export class HomeComponent implements OnInit {
 			alert("Log in to access your cart");
 		}else{
 			e.target.childNodes[0].textContent = "Added";
-			e.target.className = "btn btn-success dis";
+			e.target.className = "btn btn-success offset-lg-4 col-lg-5 col-md-12 mtp dis";
 			// e.disabled = true;
 
 			this.manageUsersService.storeUserBook({userName:this.userName,book:book,quantity:1})

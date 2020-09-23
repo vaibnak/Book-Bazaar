@@ -85,12 +85,13 @@
 					      <p class="card-text" style="height: 150px; overflow: hidden;">{{tmp.description}}</p>
 
 					      <footer class="blockquote-footer">By <cite title="Source Title">{{tmp.author}}</cite></footer>
-					      <div class="d-flex justify-content-between mt-2">
+					      <div class="row mt-2">
+					      	<div class="col-lg-6 col-md-12 text-center">
 					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity+1)">+</a>
 					      	quantity : {{tmp.quantity}}
 					      	<a class="btn btn-primary" (click)="changeQuantityEventHandler(tmp.title,tmp.quantity-1)">-</a>
-
-						    <a class="btn btn-danger text-right" (click)="removeItemEventHandler(tmp.title)">Remove from cart</a>	
+					      	</div>
+						    <a class="btn btn-danger offset-lg-2 col-lg-4 col-md-12 mtp" (click)="removeItemEventHandler(tmp.title)">Remove</a>	
 						      </div> 
 					      
 					    </div>

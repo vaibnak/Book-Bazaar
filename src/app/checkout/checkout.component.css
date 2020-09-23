@@ -9,6 +9,14 @@
         margin-top: 50px;
 }
 
+
+@media (max-width: 992px){
+	.mtp{
+		margin-top:10px;	
+	}
+	
+}
+
 .ch{
 	background-color: #001f45;
 }

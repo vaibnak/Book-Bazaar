@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {ManageUsersService} from '../manage-users.service';
+import { ActivatedRoute,Router } from "@angular/router";
 
 @Component({
   selector: 'app-upload-image',
@@ -23,7 +24,7 @@ export class UploadImageComponent implements OnInit {
 	})
 
 
-  constructor(private manageUsersService:ManageUsersService) { }
+  constructor(private manageUsersService:ManageUsersService,public route:ActivatedRoute,public router:Router) { }
 
 
 
@@ -71,5 +72,17 @@ export class UploadImageComponent implements OnInit {
         this.cardImageBase64 = null;
         this.isImageSaved = false;
     }
+
+  orderEventHandler(){
+    this.router.navigate(["/order",this.userName]);
+  }
+
+  aboutusEventHandler(){
+      this.router.navigate(["/aboutus",this.userName]);
+  }
+
+  contactusEventHandler(){
+      this.router.navigate(["/contactus",this.userName]);
+  }
 
 }
