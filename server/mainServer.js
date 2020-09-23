@@ -30,6 +30,8 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cors());
 
 
+app.use(express.static(path.join(__dirname,"public","dist","Book-Bazaar")));
+
 // endpoint to register the user
 app.use('/api/register',registerUserRoute);
 
