@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
   userName:string;
   userBook;
   logged;
+  selectedBookTitle:string;
+  selectedBookContent:string;
+  selectedBookPrice:number;
+  selectedBookImage:string;
+  selectedBookAuthor:string;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService, private getFilterService: GetFiltersService,public router:Router) {
   		console.log("constructor called");
   		this.displayLoading = true;
@@ -222,6 +227,14 @@ export class HomeComponent implements OnInit {
 
 	contactusEventHandler(){
 	    this.router.navigate(["/contactus",this.userName]);
+	}
+
+	viewEventHandler(title,desc,author,price,img){
+		this.selectedBookTitle = title;
+		this.selectedBookContent = desc;
+		this.selectedBookImage = img;
+		this.selectedBookPrice = price;
+		this.selectedBookAuthor = author;
 	}
 
 
