@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {ManageUsersService} from '../manage-users.service';
 import {Router} from "@angular/router"
+import {EncrServiceService} from '../encr-service.service';
+import {environment} from '../../environments/environment';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
 	});
   wrongInfo:boolean;
   
-  constructor(private manageUsersService:ManageUsersService,public router:Router) { }
+  constructor(private encrService:EncrServiceService, private manageUsersService:ManageUsersService,public router:Router) { }
 
   ngOnInit(): void {
     this.wrongInfo = false;
@@ -28,8 +30,10 @@ export class LoginComponent implements OnInit {
   	console.log(this.loginForm.get('password').value)
   	console.log(this.loginForm.get('userName').value)
 
+    let pass = this.encrService.set(environment.key,this.loginForm.get('password').value)
+
  	
- 	this.manageUsersService.loginUser({userName:this.loginForm.get('userName').value, password: this.loginForm.get('password').value})
+ 	this.manageUsersService.loginUser({userName:this.loginForm.get('userName').value, password: pass})
  	.subscribe((data)=>{
  		console.log(data);
  		var tempObj:any=data["message"];

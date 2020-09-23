@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   serverUrl:"http://localhost:3000/",
+  key: "123456$#@$^@1ERF",
 };
 
 /*

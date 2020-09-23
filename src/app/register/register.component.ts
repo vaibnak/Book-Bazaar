@@ -3,6 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {User} from '../user';
 import {ManageUsersService} from '../manage-users.service';
 import  {Router} from "@angular/router";
+import {EncrServiceService} from '../encr-service.service';
+import {environment} from '../../environments/environment';
+
+
 
 
 @Component({
@@ -25,7 +29,7 @@ export class RegisterComponent implements OnInit {
   userNameUnique:boolean;
 
 
-  constructor(private manageUsersService:ManageUsersService,public router:Router) { 
+  constructor(private encrService:EncrServiceService, private manageUsersService:ManageUsersService,public router:Router) { 
   	
   }
 
@@ -71,9 +75,10 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
   	console.log("form submit function called");
   	console.log(this.registerForm.get('name').value)
-  	console.log(this.registerForm.get('userName').value)
+  	console.log(this.registerForm.get('userName').value);
+    let pass = this.encrService.set(environment.key,this.registerForm.get('password').value)
   	this.user = new User(this.registerForm.get('name').value,this.registerForm.get('userName').value,
-  		this.registerForm.get('phoneNo').value,this.registerForm.get('password').value,this.registerForm.get('address').value);
+  		this.registerForm.get('phoneNo').value,pass,this.registerForm.get('address').value);
     
    this.checkUserName(this.registerForm.get('userName').value);
  	  

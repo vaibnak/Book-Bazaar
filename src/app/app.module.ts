@@ -16,6 +16,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { OrderComponent } from './order/order.component';
+import {EncrServiceService} from './encr-service.service';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { OrderComponent } from './order/order.component';
     HttpClientModule
 
   ],
-  providers: [ManageUsersService,GetFiltersService],
+  providers: [ManageUsersService,GetFiltersService,EncrServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

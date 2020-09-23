@@ -73,16 +73,16 @@ export class UploadImageComponent implements OnInit {
         this.isImageSaved = false;
     }
 
-  orderEventHandler(){
-    this.router.navigate(["/order",this.userName]);
-  }
+  // orderEventHandler(){
+  //   this.router.navigate(["/order",this.userName]);
+  // }
 
-  aboutusEventHandler(){
-      this.router.navigate(["/aboutus",this.userName]);
-  }
+  // aboutusEventHandler(){
+  //     this.router.navigate(["/aboutus",this.userName]);
+  // }
 
-  contactusEventHandler(){
-      this.router.navigate(["/contactus",this.userName]);
-  }
+  // contactusEventHandler(){
+  //     this.router.navigate(["/contactus",this.userName]);
+  // }
 
 }
