@@ -16,10 +16,10 @@ export class RegisterComponent implements OnInit {
 		name: new FormControl('',[Validators.required]),
 		userName: new FormControl('',[Validators.required]),
 		phoneNo: new FormControl('',[Validators.required,Validators.pattern("[0-9]{10}")]),
-		password: new FormControl('',[Validators.required]),
+		password: new FormControl('',[Validators.required,Validators.minLength(4), Validators.maxLength(10)]),
 		cnfrmPassword: new FormControl('',[Validators.required]),
 		address: new FormControl('',[Validators.required])
-	})
+	},this.pwdMatchValidator)
 
 	user:User;
 
@@ -30,6 +30,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  pwdMatchValidator(frm:FormGroup){
+    return frm.get('password').value === frm.get('cnfrmPassword').value?null:{'mismatch':true};
   }
 
   onSubmit(){

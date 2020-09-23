@@ -61,35 +61,56 @@
 			  <div class="form-group">
 			    <label for="name" class="text-light">Name</label>
 			    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Full name" formControlName="name">
+			    <small *ngIf="registerForm.get('name').errors?.required && (registerForm.get('name').touched || registerForm.get('name').dirty)" class="text-danger">
+			    	Full name is required
+			    </small>
 			  </div>
 			  <div class="form-group">
 			    <label for="username" class="text-light">Username</label>
 			    <input type="text" class="form-control" id="username" placeholder="username" formControlName="userName">
+			    <small *ngIf="registerForm.get('userName').errors?.required && (registerForm.get('userName').touched || registerForm.get('userName').dirty)" class="text-danger">
+			    	User Name is required
+			    </small>
 			  </div>
 			  <div class="form-group">
 			    <label for="phone" class="text-light">Phone no.</label>
 			    <input type="number" class="form-control" id="phone" placeholder="Phone number" formControlName="phoneNo">
-			    <small class="text-danger">
-			  	{{registerForm.get('phoneNo').status}}
+			    <small *ngIf="registerForm.get('phoneNo').errors?.required && (registerForm.get('phoneNo').touched || registerForm.get('phoneNo').dirty)" class="text-danger">Phone Number is required</small>
+			    <small *ngIf="registerForm.get('phoneNo').errors?.pattern && (registerForm.get('phoneNo').touched || registerForm.get('phoneNo').dirty)" class="text-danger">
+			  	 Enter a valid phone number
 			  </small>
 			  </div>
-			  <small class="text-danger">
-			  	{{registerForm.get('phoneNo').status}}
-			  </small>
+			  
 			  <div class="form-group">
 			    <label for="password" class="text-light">Password</label>
 			    <input type="password" class="form-control" id="username" placeholder="password" formControlName="password">
+			    <small id="passwordHelp" class="form-text text-muted">password should be min 4 and max 8 length</small>
+				<small *ngIf="registerForm.get('password').errors?.required && (registerForm.get('password').touched || registerForm.get('password').dirty)" class="text-danger">password is required</small>
+
+				<small *ngIf="registerForm.get('password').errors?.minlength && (registerForm.get('password').touched || registerForm.get('password').dirty)" class="text-danger">
+					password should be of min 4 length
+				</small>
+
+				<small *ngIf="registerForm.get('password').errors?.maxlength && (registerForm.get('password').touched || registerForm.get('password').dirty)" class="text-danger">
+					password should be of max 8 length
+				</small>
 			  </div>
 			  <div class="form-group">
 			    <label for="cnfrmPassword" class="text-light">Confirm password</label>
 			    <input type="password" class="form-control" id="username" placeholder="password" formControlName="cnfrmPassword">
+			    <small *ngIf="registerForm.get('cnfrmPassword').errors?.required && (registerForm.get('cnfrmPassword').touched || registerForm.get('cnfrmPassword').dirty)" class="text-danger">confirm password is required</small>
+
+				<small *ngIf=" registerForm.errors?.mismatch && (registerForm.get('cnfrmPassword').touched || registerForm.get('cnfrmPassword').dirty)" class="text-danger">
+              Password doesn't match
+            	</small>
 			  </div>
 			  <div class="form-group">
 			    <label for="address" class="text-light">Address</label>
 			    <input type="text" class="form-control" id="address" placeholder="Address" formControlName="address">
+			    <small *ngIf="registerForm.get('address').errors?.required && (registerForm.get('address').touched || registerForm.get('address').dirty)" class="text-danger">address is required</small>
 			  </div>
 			  
-			  <button type="submit" class="btn btn-warning btn-block">Register</button>
+			  <button type="submit" class="btn btn-warning btn-block" [disabled]="registerForm.invalid">Register</button>
 			</form>
     	</div>
     </div>
