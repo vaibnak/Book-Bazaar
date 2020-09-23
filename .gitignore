@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # the database config file
-/dsConfig,js
+/dsConfig.js
