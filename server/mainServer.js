@@ -21,6 +21,7 @@ var removeUserBookRoute = require('./routes/removeUserBookRoute');
 var updateQuantityRoute = require('./routes/updateQuantityRoute');
 var orderBookRoute = require('./routes/orderBookRoute');
 var getOrderRoute = require('./routes/getOrderRoute');
+var getUserRoute = require('./routes/getUserRoute');
 
 
 app.use(bodyParser.json({limit: '50mb'}));
@@ -70,6 +71,9 @@ app.use('/api/orderBook',orderBookRoute);
 
 // endpoint to get all the orders
 app.use('/api/getOrder',getOrderRoute);
+
+// endpoint to get a user by userName
+app.use('/api/getUser',getUserRoute);
 
 
 
