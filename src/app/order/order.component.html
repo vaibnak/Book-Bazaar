@@ -58,8 +58,12 @@
 		<h1 *ngIf="notLogged" class="text-center col-12 mt-5">Kindly Log in to view your orders</h1>
 	</div>
 
+		<div class="row">
+		<h1 *ngIf="displayLoading" class="text-center col-12 mt-5">Loading...</h1>
+	</div>
+
 	<div class="row">
-		<div *ngIf = "!notLogged" class="col-4 ttlCrd">
+		<div *ngIf = "!notLogged && !displayLoading" class="col-4 ttlCrd">
 			<div class="card shadow" style="max-width: 18rem">
 				<div class="card-header text-light ch">User Info</div>
 			  <div class="card-body">
@@ -70,7 +74,7 @@
 			</div>
 		</div>
 		
-		<div *ngIf="!notLogged" class="col-8">
+		<div *ngIf="!notLogged && !displayLoading" class="col-8">
 			<h1 class="text-center mt-5">Your Previous Orders</h1>
 			<div *ngFor="let tmp of orderedBook;let i=index" class="card-deck mt-5">
 	    		<div class="row">

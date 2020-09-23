@@ -56,24 +56,30 @@
 			</nav>
 		</div>
 	</div>
+
+	<div class="row">
+		<h1 *ngIf = "displayLoading" class="mt-5">Loading....</h1>
+	</div>
+
+	
 	
 	<div class="row">
 		<div *ngIf = "notLogged"class="col-12 mt-5" >
 			<h1 class="text-center">Log in to view your cart</h1>
 		</div>
-		<div *ngIf = "!notLogged" class="col-4 ttlCrd">
+		<div *ngIf = "!notLogged && !displayLoading" class="col-4 ttlCrd">
 			<div class="card shadow" style="max-width: 18rem">
 				<div class="card-header text-light ch">TOTAL</div>
 			  <div class="card-body">
 			    <p class="card-text">your order : {{this.total | currency: 'INR':true}}</p>
 			    <p class="card-text">GST : {{(this.total*18)/100 | currency: 'INR':true}} (18%) </p>
 			    <p class="card-text">Total : {{this.total + (this.total*18)/100 | currency: 'INR':true}}</p>
-			    <a class="btn btn-primary" (click)="getorderEventHandler()">Place order</a>
+			    <button class="btn btn-primary" (click)="getorderEventHandler()" [disabled]="!placeOrder">Place order</button>
 
 			  </div>
 			</div>
 		</div>
-		<div *ngIf = "!notLogged" class="col-8">
+		<div *ngIf = "!notLogged && !displayLoading" class="col-8">
 			<h1 class=" text-center mt-5">Books in your Cart</h1>
 			<div *ngFor="let tmp of userBook;let i=index" class="card-deck mt-2">
 					<div class="card p-2 border-5 border-primary shadow" style="max-width: 30rem">

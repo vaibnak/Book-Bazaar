@@ -32,7 +32,7 @@ export class OrderComponent implements OnInit {
     // we have the username so getting the books that the user has selected
   	this.manageUsersService.getOrder({userName: this.userName})
  	  .subscribe((data)=>{
-   		this.displayLoading = false;
+   		
       // Object.entries takes the object and converts it into arrays, had to do this because
       // was getting error on iterating over the data 
    		arr1 = Object.entries(data);
@@ -53,10 +53,12 @@ export class OrderComponent implements OnInit {
   		 			this.totalOrders += tmp.quantity;
               
   		 		}
+  		 		this.displayLoading = false;
   		 	},(err)=>{
   		 		console.log(err);
   		 	})
    		}
+   		this.displayLoading = false;
    		this.orderedBook = tmpArray;
  	  },(err)=>{
  		  console.log(err);

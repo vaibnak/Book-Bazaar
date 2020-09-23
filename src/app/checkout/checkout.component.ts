@@ -13,12 +13,17 @@ export class CheckoutComponent implements OnInit {
   userName:string;
   userBook;
   total:number;
-  displayLoading;
+  displayLoading:boolean;
   notLogged:boolean;
+  totalItems:number;
+  placeOrder:boolean;
   constructor(public route:ActivatedRoute,private manageUsersService:ManageUsersService,public router:Router) {
   	this.userName = this.route.snapshot.paramMap.get('userName');
   	console.log("username: ",this.userName);
+    this.displayLoading = true;
     this.total = 0;
+    this.totalItems = 0;
+    this.placeOrder = false;
     this.notLogged = false;
     if(this.userName == "undefined"){
       this.notLogged = true;
@@ -34,7 +39,7 @@ export class CheckoutComponent implements OnInit {
     // we have the username so getting the books that the user has selected
   	this.manageUsersService.getUserBook({user: this.userName})
  	  .subscribe((data)=>{
-   		this.displayLoading = false;
+   		
       // Object.entries takes the object and converts it into arrays, had to do this because
       // was getting error on iterating over the data 
    		arr1 = Object.entries(data);
@@ -50,14 +55,24 @@ export class CheckoutComponent implements OnInit {
 
   		 		for(let tmp of arr2){
             // adding quantity field to the book 
-            tmp.quantity = b.quantity; 
-  		 			tmpArray.push(tmp)
+            tmp.quantity = b.quantity;
+            this.totalItems += b.quantity; 
+  		 			console.log("totalItems: ",this.totalItems);
+             if(this.totalItems > 0){
+               this.placeOrder = true;
+             }
+             tmpArray.push(tmp)
             this.total += Number(tmp.price*tmp.quantity)  
   		 		}
+
   		 	},(err)=>{
   		 		console.log(err);
   		 	})
    		}
+
+
+
+      this.displayLoading = false;
    		this.userBook = tmpArray;
  	  },(err)=>{
  		  console.log(err);
@@ -66,6 +81,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   getUserBook(){
+      this.totalItems = 0;
+      this.placeOrder = false;
       let tmpArray = [];
       let arr1 = [];
       let arr2 = [];
@@ -90,7 +107,12 @@ export class CheckoutComponent implements OnInit {
 
              for(let tmp of arr2){
               // adding quantity field to the book 
-              tmp.quantity = b.quantity; 
+              tmp.quantity = b.quantity;
+              this.totalItems += b.quantity; 
+             console.log("totalItems: ",this.totalItems);
+             if(this.totalItems > 0){
+               this.placeOrder = true;
+             } 
                tmpArray.push(tmp)
               this.total += Number(tmp.price*tmp.quantity)  
              }
@@ -98,6 +120,7 @@ export class CheckoutComponent implements OnInit {
              console.log(err);
            })
          }
+         this.displayLoading = false;
          this.userBook = tmpArray;
        },(err)=>{
          console.log(err);
@@ -105,6 +128,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   removeItemEventHandler(title){
+    this.displayLoading = true;
     this.manageUsersService.removeUserBook({userName:this.userName,book:[title]})
      .subscribe((data)=>{
        console.log(data);
@@ -120,6 +144,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   changeQuantityEventHandler(title,quantity){
+    this.displayLoading = true;
     this.manageUsersService.updateQuantity({userName:this.userName,book:title,quantity:quantity})
      .subscribe((data)=>{
        this.getUserBook();

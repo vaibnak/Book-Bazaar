@@ -183,6 +183,8 @@ export class HomeComponent implements OnInit {
 			this.manageUsersService.storeUserBook({userName:this.userName,book:book,quantity:1})
 	 		.subscribe((data)=>{
 	 			console.log(data);
+	 			e.target.childNodes[0].textContent = "Added";
+			e.target.className = "btn btn-success offset-lg-4 col-lg-5 col-md-12 mtp dis";
 	 			// this.displayLoading = false;
 	 		},(err)=>{
 	 			console.log(err);
